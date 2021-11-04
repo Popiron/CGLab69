@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Windows.Media.Media3D;
+
+namespace CGLab69.models
+{
+    /// <summary>
+    /// Октаэдр
+    /// </summary>
+    class Octahedron : Polyhedron
+    {
+        Point3D a = new Point3D(0, 0, 0);
+        Point3D b = new Point3D(300, 300, 0);
+        Point3D c = new Point3D(-300, 300, 0);
+        Point3D d = new Point3D(0, 300, -300);
+        Point3D e = new Point3D(0, 300, 300);
+        Point3D f = new Point3D(0, 600, 0);
+
+        public Octahedron() : base()
+        {
+            AddEdges(a, new List<Point3D> { b, d, c, e });
+            AddEdges(b, new List<Point3D> { d });
+            AddEdges(c, new List<Point3D> { e });
+            AddEdges(d, new List<Point3D> { c });
+            AddEdges(e, new List<Point3D> { b });
+            AddEdges(f, new List<Point3D> { b, d, c, e });
+        }
+    }
+}
