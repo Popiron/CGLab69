@@ -55,6 +55,7 @@ namespace CGLab69.models
                 AdjacencyMatrix.Add(p1, new List<Point3D> { p2 });
             else
                 AdjacencyMatrix[p1].Add(p2);
+
         }
 
         public void AddEdges(Point3D point, List<Point3D> other)
@@ -65,70 +66,44 @@ namespace CGLab69.models
 
         public Polyhedron useProjection(Projections projection)
         {
-            double[,] projMatrix;
+            Matrix3D projMatrix;
             switch (projection)
             {
                 case Projections.Perspective:
-                    double[,] pers = {
-                    { 1, 0, 0, 0 },
-                    { 0, 1, 0, 0 },
-                    { 0, 0, 0, 0.001},
-                    { 0, 0, 0, 1 }
-                    };
-                    projMatrix = pers;
+                    projMatrix = new Matrix3D(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.001, 0, 0, 0, 1);
                     break;
                 case Projections.Isometric:
-                    double[,] isom = {
-                    { 0.707, -0.408, 0, 0 },
-                    { 0, 0.816, 0, 0 },
-                    { -0.707, -0.408, 0, 0 },
-                    { 0, 0, 0, 1 }};
-                    projMatrix = isom;
+                    projMatrix = new Matrix3D(0.707,-0.408,0,0,0,0.816,0,0,-0.707,-0.408,0,0,0,0,0,1);
                     break;
                 case Projections.Dimetric:
-                    double[,] dim = {
-                    { 0.935, -0.118, 0, 0 },
-                    { 0, 0.943, 0, 0 },
-                    { -0.354, -0.312, 0, 0 },
-                    { 0, 0, 0, 1 }
-                    };
-                    projMatrix = dim;
+                    projMatrix = new Matrix3D(0.935,-0.118,0,0,0,0.943,0,0,-0.354,-0.312,0,0,0,0,0,1);
                     break;
                 case Projections.Trimetric:
-                    double[,] trim = {
-                    { -Math.Sqrt(2)/2, (-Math.Sqrt(2)/2)*(1/2), 0, 0 },
-                    { 0, Math.Sqrt(3)/2, 0, 0 },
-                    { -Math.Sqrt(2)/2, -(-Math.Sqrt(2)/2)*(Math.Sqrt(3)/2), 0, 0 },
-                    { 0, 0, 0, 1 }
-                    };
-                    projMatrix = trim;
+                    projMatrix = new Matrix3D(-Math.Sqrt(2) / 2, (-Math.Sqrt(2) / 2) * (1 / 2), 0, 0, 0, Math.Sqrt(3) / 2, 0, 0, -Math.Sqrt(2) / 2, -(-Math.Sqrt(2) / 2) * (Math.Sqrt(3) / 2), 0, 0, 0, 0, 0, 1);
                     break;
                 default:
-                    double[,] pers1 = {
-                    { 1, 0, 0, 0 },
-                    { 0, 1, 0, 0 },
-                    { 0, 0, 0, 0.001},
-                    { 0, 0, 0, 1 }
-                    };
-                    projMatrix = pers1;
+                    projMatrix = new Matrix3D(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.001, 0, 0, 0, 1);
                     break;
             }
             Polyhedron result = new Polyhedron();
             foreach (var val in AdjacencyMatrix)
             {
-                var matr = new double[,] { { val.Key.X, val.Key.Y, val.Key.Z, 1 } };
-                var mult = MatrixHelpers.multiply(matr, projMatrix);
-                var startPoint = new Point3D(mult[0, 0] / mult[0, 3], mult[0, 1] / mult[0, 3], 0);
+                var matr = new Matrix3D(val.Key.X, val.Key.Y, val.Key.Z, 1 ,1,1,1,1,1,1,1,1,1,1,1,1);
+                var mult = Matrix3D.Multiply(matr, projMatrix);
+                var startPoint = new Point3D(mult.M11/mult.M14, mult.M12/mult.M14, 0);
 
                 foreach (var v in val.Value)
                 {
-                    matr = new double[,] { { v.X, v.Y, v.Z, 1 } };
-                    mult = MatrixHelpers.multiply(matr, projMatrix);
-                    var endPoint = new Point3D(mult[0, 0] / mult[0, 3], mult[0, 1] / mult[0, 3], 0);
+
+                    matr = new Matrix3D(v.X, v.Y, v.Z, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+                    mult = Matrix3D.Multiply(matr, projMatrix);
+                    var endPoint = new Point3D(mult.M11 / mult.M14, mult.M12 / mult.M14, 0);
                     result.AddEdge(startPoint, endPoint);
+
                 }
             }
             return result;
         }
+
     }
 }
