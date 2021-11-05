@@ -102,5 +102,39 @@ namespace CGLab69.Lab6
             currentProjection = Projections.Dimetric;
             loadFigure();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBoxX.Text != "") { 
+                double x = Convert.ToDouble(textBoxX);
+            }
+            if (textBoxY.Text != "")
+            {
+                double y = Convert.ToDouble(textBoxY);
+            }
+            if (textBoxZ.Text != "")
+            {
+                double z = Convert.ToDouble(textBoxZ);
+            }
+            if (radioButtonOffset.Checked)
+            {
+               
+            }
+            else
+             if (radioButtonRotation.Checked)
+            {
+
+            }    
+            else
+                if(radioButtonScale.Checked)
+            {
+
+            }
+        }
     }
 }
