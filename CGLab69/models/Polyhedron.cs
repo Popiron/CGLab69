@@ -55,7 +55,6 @@ namespace CGLab69.models
                 AdjacencyMatrix.Add(p1, new List<Point3D> { p2 });
             else
                 AdjacencyMatrix[p1].Add(p2);
-
         }
 
         public void AddEdges(Point3D point, List<Point3D> other)
@@ -70,7 +69,7 @@ namespace CGLab69.models
             switch (projection)
             {
                 case Projections.Perspective:
-                   double[,] pers = {
+                    double[,] pers = {
                     { 1, 0, 0, 0 },
                     { 0, 1, 0, 0 },
                     { 0, 0, 0, 0.001},
@@ -123,16 +122,13 @@ namespace CGLab69.models
 
                 foreach (var v in val.Value)
                 {
-
                     matr = new double[,] { { v.X, v.Y, v.Z, 1 } };
                     mult = MatrixHelpers.multiply(matr, projMatrix);
                     var endPoint = new Point3D(mult[0, 0] / mult[0, 3], mult[0, 1] / mult[0, 3], 0);
                     result.AddEdge(startPoint, endPoint);
-
                 }
             }
             return result;
         }
-
     }
 }

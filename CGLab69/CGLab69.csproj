@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <Reference Include="PresentationCore">
-      <HintPath>..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.19\PresentationCore.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\3.1.13\PresentationCore.dll</HintPath>
     </Reference>
   </ItemGroup>
 

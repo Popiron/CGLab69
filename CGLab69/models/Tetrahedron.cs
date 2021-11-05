@@ -17,5 +17,17 @@ namespace CGLab69.models
             AddEdges(b, new List<Point3D> { d });
             AddEdges(c, new List<Point3D> { b, d });
         }
+
+        public Tetrahedron(List<Point3D> points) : base()
+        {
+            a = points[0];
+            b = points[1];
+            c = points[2];
+            d = points[3];
+
+            AddEdges(a, new List<Point3D> { b, d, c });
+            AddEdges(b, new List<Point3D> { d });
+            AddEdges(c, new List<Point3D> { b, d });
+        }
     }
 }
