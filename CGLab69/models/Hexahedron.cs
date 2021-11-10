@@ -33,14 +33,15 @@ namespace CGLab69.models
 
         public Hexahedron(List<Point3D> points) : base()
         {
-            a = points[0];
-            b = points[1];
-            c = points[2];
-            d = points[3];
-            e = points[4];
-            f = points[5];
-            g = points[6];
-            h = points[7];
+            a = points[2];//0
+            b = points[0];//2
+            c = points[1];//1
+            d = points[3];//3
+            
+            e = points[4];//4
+            f = points[6];//6
+            g = points[7];//5
+            h = points[5];//7
 
             AddEdges(a, new List<Point3D> { e, b });
             AddEdges(b, new List<Point3D> { f, c });

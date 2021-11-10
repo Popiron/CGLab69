@@ -31,8 +31,8 @@ namespace CGLab69.models
         {
             a = points[0];
             b = points[1];
-            c = points[2];
-            d = points[3];
+            c = points[3];
+            d = points[2];
             e = points[4];
             f = points[5];
 
