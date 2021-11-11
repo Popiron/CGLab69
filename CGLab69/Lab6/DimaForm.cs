@@ -287,6 +287,18 @@ namespace CGLab69.Lab6
             Transform(polyhedron, tM);
             refreshFigure();
         }
+        public void RotateLine()
+        {
+            double[,] tM =
+                {
+                {Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), 0, 0},
+                {-Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), 0, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1}
+            };
+            Transform(polyhedron, tM);
+            refreshFigure();
+        }
         private void buttonTranslate_Click(object sender, EventArgs e)
         {
             Translate();
@@ -348,5 +360,34 @@ namespace CGLab69.Lab6
         {
 
         }
+        List<Point> pl = new List<Point>();
+        private void DimaForms_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+            Point point = new Point();
+            Graphics g = this.CreateGraphics(); 
+            if (e.Button == MouseButtons.Left)
+            { 
+            if (radioButton1.Checked)
+            {
+                point.X = e.X;
+                point.Y = e.Y;
+                pl.Add(point);
+                if (pl.Count % 2==0)
+                {
+                    radioButton1.Enabled = false; 
+                    g.DrawLine(Pens.Red, pl[pl.Count-1], pl[pl.Count - 2]);
+                    
+                }
+            }
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+                
+        }
+
+        
     }
 }
