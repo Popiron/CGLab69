@@ -289,11 +289,24 @@ namespace CGLab69.Lab6
         }
         public void RotateLine()
         {
+            var x1 = double.Parse(textBoxX1.Text);
+            var x2 = double.Parse(textBoxX2.Text);
+
+            var y1 = double.Parse(textBoxY1.Text);
+            var y2 = double.Parse(textBoxY2.Text);
+
+            var z1 = double.Parse(textBoxZ1.Text);
+            var z2 = double.Parse(textBoxZ2.Text);
+
+            var length = Math.Sqrt(Math.Pow(x2 - x1, 2)+ Math.Pow(y2 - y1, 2)+ Math.Pow(z2 - z1, 2));
+            var l = (x2 - x1) / length;
+            var m = (y2 - y1) / length;
+            var n = (z2 - z1) / length;
             double[,] tM =
                 {
-                {Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), 0, 0},
-                {-Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), 0, 0},
-                {0, 0, 1, 0},
+                {l*l+Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180))*(1-l*l), l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*m+ n*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n- m*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), 0},
+                {l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*m- n*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)),m*m+Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180))*(1-m*m), m*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n+ l*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), 0},
+                {l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n+ m*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), m*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n- l*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), n*n+Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180))*(1-n*n), 0},
                 {0, 0, 0, 1}
             };
             Transform(polyhedron, tM);
@@ -364,22 +377,26 @@ namespace CGLab69.Lab6
         
         private void button1_Click(object sender, EventArgs e)
         {
-            
-                
+            DrawL();
+            RotateLine();
+
         }
 
-        List<Point3D> point3d = new List<Point3D>();
-        private void buttonDraw_Click(object sender, EventArgs e)
+        public void DrawL()
         {
             Point3D p1 = new Point3D(double.Parse(textBoxX1.Text), double.Parse(textBoxY1.Text), double.Parse(textBoxZ1.Text));
             Point3D p2 = new Point3D(double.Parse(textBoxX2.Text), double.Parse(textBoxY2.Text), double.Parse(textBoxZ2.Text));
-            Polyhedron line = new Polyhedron(new List<Point3D>{ p1, p2 });
+            Polyhedron line = new Polyhedron(new List<Point3D> { p1, p2 });
             line.AddEdge(p1, p2);
 
             foreach (var r in line.useProjection(currentProjection).Edges)
             {
-                g.DrawLine(globalPen, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
+                g.DrawLine(Pens.Red, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
             }
+        }
+        private void buttonDraw_Click(object sender, EventArgs e)
+        {
+            DrawL();
         }
     }
 }
