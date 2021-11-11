@@ -360,34 +360,22 @@ namespace CGLab69.Lab6
         {
 
         }
-        List<Point> pl = new List<Point>();
-        private void DimaForms_MouseDown(object sender, MouseEventArgs e)
-        {
-            
-            Point point = new Point();
-            Graphics g = this.CreateGraphics(); 
-            if (e.Button == MouseButtons.Left)
-            { 
-            if (radioButton1.Checked)
-            {
-                point.X = e.X;
-                point.Y = e.Y;
-                pl.Add(point);
-                if (pl.Count % 2==0)
-                {
-                    radioButton1.Enabled = false; 
-                    g.DrawLine(Pens.Red, pl[pl.Count-1], pl[pl.Count - 2]);
-                    
-                }
-            }
-            }
-        }
+        
+        
         private void button1_Click(object sender, EventArgs e)
         {
             
                 
         }
 
-        
+        List<Point3D> point3d = new List<Point3D>();
+        private void buttonDraw_Click(object sender, EventArgs e)
+        {
+            Point3D p1 = new Point3D(double.Parse(textBoxX1.Text), double.Parse(textBoxY1.Text), double.Parse(textBoxZ1.Text));
+            Point3D p2 = new Point3D(double.Parse(textBoxX2.Text), double.Parse(textBoxY2.Text), double.Parse(textBoxZ2.Text));
+            point3d.Add(p1);
+            point3d.Add(p2);
+            g.DrawLine(Pens.Red, p1,p2);
+        }
     }
 }
