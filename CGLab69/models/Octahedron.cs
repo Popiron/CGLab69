@@ -26,5 +26,22 @@ namespace CGLab69.models
             AddEdges(e, new List<Point3D> { b });
             AddEdges(f, new List<Point3D> { b, d, c, e });
         }
+
+        public Octahedron(List<Point3D> points) : base()
+        {
+            a = points[0];
+            b = points[1];
+            c = points[3];
+            d = points[2];
+            e = points[4];
+            f = points[5];
+
+            AddEdges(a, new List<Point3D> { b, d, c, e });
+            AddEdges(b, new List<Point3D> { d });
+            AddEdges(c, new List<Point3D> { e });
+            AddEdges(d, new List<Point3D> { c });
+            AddEdges(e, new List<Point3D> { b });
+            AddEdges(f, new List<Point3D> { b, d, c, e });
+        }
     }
 }
