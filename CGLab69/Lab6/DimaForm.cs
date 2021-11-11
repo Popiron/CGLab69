@@ -17,6 +17,7 @@ namespace CGLab69.Lab6
     {
         Graphics g;
         Polyhedron polyhedron;
+        Polyhedron line;
         Figures currentFigure;
         Projections currentProjection;
         int midX;
@@ -32,6 +33,7 @@ namespace CGLab69.Lab6
 
         private void DimaForm_Shown(object sender, EventArgs e)
         {
+            //line = new Polyhedron(new List<Point3D> { new Point3D(0, 0, 0), new Point3D(0, 0, 0) });
             midX = Size.Width / 2;
             midY = Size.Height / 2 - 300;
             tetraRadioButton.Checked = true;
@@ -73,6 +75,21 @@ namespace CGLab69.Lab6
             }
         }
 
+        private void eraseLine()
+        {
+            foreach (var r in line.useProjection(currentProjection).Edges)
+            {
+                g.DrawLine(Pens.White, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
+            }
+        }
+
+        private void refreshLine() {
+            foreach (var r in line.useProjection(currentProjection).Edges)
+            {
+                g.DrawLine(Pens.Red, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
+            }
+        }
+
         private void tetraRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             currentFigure = Figures.Tetrahedron;
@@ -95,24 +112,44 @@ namespace CGLab69.Lab6
         {
             currentProjection = Projections.Perspective;
             loadFigure();
+            if (line != null)
+            {
+                refreshLine();
+            }
         }
 
         private void isometricRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             currentProjection = Projections.Isometric;
             loadFigure();
+
+            if (line != null)
+            {
+                refreshLine();
+            }
         }
 
         private void trimetricRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             currentProjection = Projections.Trimetric;
             loadFigure();
+
+            if (line != null)
+            {
+                refreshLine();
+            }
         }
 
         private void dimetricRadioButton_CheckedChanged(object sender, EventArgs e)
         {
+            eraseLine();
             currentProjection = Projections.Dimetric;
             loadFigure();
+
+            if (line != null)
+            {
+                refreshLine();
+            }
         }
 
         private void Transform(Polyhedron t, double[,] m)
@@ -379,14 +416,13 @@ namespace CGLab69.Lab6
         {
             DrawL();
             RotateLine();
-
         }
 
         public void DrawL()
         {
             Point3D p1 = new Point3D(double.Parse(textBoxX1.Text), double.Parse(textBoxY1.Text), double.Parse(textBoxZ1.Text));
             Point3D p2 = new Point3D(double.Parse(textBoxX2.Text), double.Parse(textBoxY2.Text), double.Parse(textBoxZ2.Text));
-            Polyhedron line = new Polyhedron(new List<Point3D> { p1, p2 });
+            line = new Polyhedron(new List<Point3D> { p1, p2 });
             line.AddEdge(p1, p2);
 
             foreach (var r in line.useProjection(currentProjection).Edges)
