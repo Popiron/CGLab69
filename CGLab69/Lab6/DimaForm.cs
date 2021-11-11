@@ -373,9 +373,13 @@ namespace CGLab69.Lab6
         {
             Point3D p1 = new Point3D(double.Parse(textBoxX1.Text), double.Parse(textBoxY1.Text), double.Parse(textBoxZ1.Text));
             Point3D p2 = new Point3D(double.Parse(textBoxX2.Text), double.Parse(textBoxY2.Text), double.Parse(textBoxZ2.Text));
-            point3d.Add(p1);
-            point3d.Add(p2);
-            g.DrawLine(Pens.Red, p1,p2);
+            Polyhedron line = new Polyhedron(new List<Point3D>{ p1, p2 });
+            line.AddEdge(p1, p2);
+
+            foreach (var r in line.useProjection(currentProjection).Edges)
+            {
+                g.DrawLine(globalPen, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
+            }
         }
     }
 }
