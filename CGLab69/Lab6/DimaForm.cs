@@ -203,8 +203,8 @@ namespace CGLab69.Lab6
             double[,] tM =
             {
                 {1, 0, 0, 0},
-                {0, Math.Cos((double)numericUpDown4.Value * (Math.PI / 180)), -Math.Sin((double)numericUpDown4.Value * (Math.PI / 180)), 0},
-                {0, Math.Sin((double)numericUpDown4.Value * (Math.PI / 180)), Math.Cos((double)numericUpDown4.Value * (Math.PI / 180)), 0},
+                {0, Math.Cos((double)numericUpDown4.Value * (Math.PI / 180)), Math.Sin((double)numericUpDown4.Value * (Math.PI / 180)), 0},
+                {0, -Math.Sin((double)numericUpDown4.Value * (Math.PI / 180)), Math.Cos((double)numericUpDown4.Value * (Math.PI / 180)), 0},
                 {0, 0, 0, 1}
             };
             Transform(polyhedron, tM);
@@ -433,6 +433,77 @@ namespace CGLab69.Lab6
         private void buttonDraw_Click(object sender, EventArgs e)
         {
             DrawL();
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            g.Clear(Color.White);
+            points = new List<Point3D>();
+        }
+        List<Point3D> points = new List<Point3D>();
+        private void DimaForm_Click(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+           if (radioButtonDP.Checked)
+            { 
+            var p = new Point3D(e.X, e.Y, 0);
+            points.Add(p);
+                g.DrawEllipse(globalPen, e.X, e.Y, 5, 5);
+            }
+        }
+        private void buttonRotation_Click(object sender, EventArgs e)
+        {
+            polyhedron = new Polyhedron(points);
+            if (comboBox1.SelectedIndex == 0) // x
+            {
+                double[,] tM =
+            {
+                {1, 0, 0, 0},
+                {0, Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0},
+                {0, -Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0},
+                {0, 0, 0, 1}
+            };
+                Transform(polyhedron, tM);
+            }
+            else
+                if (comboBox1.SelectedIndex == 1) //y
+            {
+                double[,] tM =
+             {
+                {Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0, Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0 },
+                {0, 1, 0, 0 },
+                {-Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0, Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0 },
+                {0, 0, 0, 1}
+            };
+                Transform(polyhedron, tM);
+            } else
+                  if (comboBox1.SelectedIndex == 2) //z
+              {
+                double[,] tM =
+                {
+                {Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), -Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0, 0},
+                {Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1}
+                };
+                Transform(polyhedron, tM);
+                
+            }
+           
+            refreshFigure();
+        }
+
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            polyhedron = new Polyhedron(points);
+            double[,] tM =
+               {
+                {1, 0, 0, 0},
+                {0, 1, 0, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1}
+            };
+            Transform(polyhedron, tM);
+            refreshFigure();
         }
     }
 }
