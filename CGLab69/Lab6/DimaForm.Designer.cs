@@ -88,6 +88,7 @@ namespace CGLab69.Lab6
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.radioButtonDP = new System.Windows.Forms.RadioButton();
+            this.button2 = new System.Windows.Forms.Button();
             this.figureBox.SuspendLayout();
             this.projectionBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -224,6 +225,7 @@ namespace CGLab69.Lab6
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.buttonClear);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.buttonScale);
@@ -754,6 +756,16 @@ namespace CGLab69.Lab6
             this.radioButtonDP.Text = "Draw Points ";
             this.radioButtonDP.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(566, 86);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 29);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "RotateCenterLine";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // DimaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -857,5 +869,6 @@ namespace CGLab69.Lab6
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.RadioButton radioButtonDP;
+        private System.Windows.Forms.Button button2;
     }
 }

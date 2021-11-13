@@ -18,6 +18,8 @@ namespace CGLab69.models
         Point3D f = new Point3D(300, 300, 0);
         Point3D g = new Point3D(300, 300, 300);
         Point3D h = new Point3D(0, 300, 300);
+        Point3D i = new Point3D(150, 0, 150);
+        Point3D j = new Point3D(150, 300, 150);
 
         public Hexahedron() : base()
         {
@@ -29,6 +31,10 @@ namespace CGLab69.models
             AddEdges(f, new List<Point3D> { g });
             AddEdges(g, new List<Point3D> { h });
             AddEdges(h, new List<Point3D> { e });
+
+            this.Vertices.Add(this.i);
+            this.Vertices.Add(this.j);
+
         }
 
         public Hexahedron(List<Point3D> points) : base()

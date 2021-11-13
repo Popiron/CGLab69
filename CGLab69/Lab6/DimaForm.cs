@@ -339,6 +339,22 @@ namespace CGLab69.Lab6
             var l = (x2 - x1) / length;
             var m = (y2 - y1) / length;
             var n = (z2 - z1) / length;
+
+            double[,] move1 =
+                        {
+                { 1, 0, 0, -x1},
+                { 0, 1, 0, -y1},
+                { 0, 0, 1, -z1},
+                { 0, 0, 0, 1}
+            };
+            double[,] move2 =
+                        {
+                { 1, 0, 0, x1},
+                { 0, 1, 0, y1},
+                { 0, 0, 1, z1},
+                { 0, 0, 0, 1}
+            };
+
             double[,] tM =
                 {
                 {l*l+Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180))*(1-l*l), l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*m+ n*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n- m*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), 0},
@@ -346,7 +362,9 @@ namespace CGLab69.Lab6
                 {l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n+ m*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), m*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n- l*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), n*n+Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180))*(1-n*n), 0},
                 {0, 0, 0, 1}
             };
+            Transform(polyhedron, move1);
             Transform(polyhedron, tM);
+            Transform(polyhedron, move2);
             refreshFigure();
         }
         private void buttonTranslate_Click(object sender, EventArgs e)
@@ -435,6 +453,83 @@ namespace CGLab69.Lab6
             DrawL();
         }
 
+
+        public void RotateCenter()
+        {
+            Point3D p1 = new Point3D(0,0,0);
+            Point3D p2 = new Point3D(0,0,0);
+            switch (currentFigure)
+            {
+                case Figures.Tetrahedron:
+                    p1 = polyhedron.Vertices[0];
+                    p2 = new Point3D(((polyhedron.Vertices[1].X + polyhedron.Vertices[2].X + polyhedron.Vertices[3].X) / 3), ((polyhedron.Vertices[1].Y + polyhedron.Vertices[2].Y + polyhedron.Vertices[3].Y) / 3), ((polyhedron.Vertices[1].Z + polyhedron.Vertices[2].Z + polyhedron.Vertices[3].Z) / 3));
+                    line = new Polyhedron(new List<Point3D> { p1, p2 });
+                    line.AddEdge(p1, p2);
+                    break;
+                case Figures.Hexahedron:
+                    //p1 = new Point3D(((polyhedron.Vertices[0].X + polyhedron.Vertices[1].X + polyhedron.Vertices[2].X + polyhedron.Vertices[3].X) / 4), ((polyhedron.Vertices[0].Y + polyhedron.Vertices[1].Y + polyhedron.Vertices[2].Y + polyhedron.Vertices[3].Y) / 4), ((polyhedron.Vertices[0].Z + polyhedron.Vertices[1].Z + polyhedron.Vertices[2].Z + polyhedron.Vertices[3].Z) / 4));
+                    //p2 = new Point3D(((polyhedron.Vertices[4].X + polyhedron.Vertices[5].X + polyhedron.Vertices[6].X + polyhedron.Vertices[7].X) / 4), ((polyhedron.Vertices[4].Y + polyhedron.Vertices[5].Y + polyhedron.Vertices[6].Y + polyhedron.Vertices[7].Y) / 4), ((polyhedron.Vertices[4].Z + polyhedron.Vertices[5].Z + polyhedron.Vertices[6].Z + polyhedron.Vertices[7].Z) / 4));
+
+                    p1 = new Point3D(150,0,150);// polyhedron.Vertices[8];
+                    p2 = new Point3D(150,300,150);// polyhedron.Vertices[9];
+
+                    line = new Polyhedron(new List<Point3D> { p1, p2 });
+                    line.AddEdge(p1, p2);
+                    break;
+                case Figures.Octahedron:
+
+                    p1 = polyhedron.Vertices[0];
+                    p2 = polyhedron.Vertices[5];
+                    line = new Polyhedron(new List<Point3D> { p1, p2 });
+                    line.AddEdge(p1, p2);
+                    break;
+            }
+            foreach (var r in line.useProjection(currentProjection).Edges)
+            {
+                g.DrawLine(Pens.Red, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
+            }
+
+            var x1 = p1.X;
+            var x2 = p2.X;
+
+            var y1 = p1.Y;
+            var y2 = p2.Y;
+
+            var z1 = p1.Z;
+            var z2 = p2.Z;
+
+            var length = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2) + Math.Pow(z2 - z1, 2));
+            var l = (x2 - x1) / length;
+            var m = (y2 - y1) / length;
+            var n = (z2 - z1) / length;
+            double[,] move1 =
+                        {
+                { 1, 0, 0, -x1},
+                { 0, 1, 0, -y1},
+                { 0, 0, 1, -z1},
+                { 0, 0, 0, 1}
+            };
+            double[,] move2 =
+                        {
+                { 1, 0, 0, x1},
+                { 0, 1, 0, y1},
+                { 0, 0, 1, z1},
+                { 0, 0, 0, 1}
+            };
+
+            double[,] tM =
+                {
+                {l*l+Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180))*(1-l*l), l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*m+ n*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n- m*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), 0},
+                {l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*m- n*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)),m*m+Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180))*(1-m*m), m*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n+ l*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), 0},
+                {l*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n+ m*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), m*(1 - Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180)))*n- l*Math.Sin(double.Parse(textBoxRotate.Text)*(Math.PI / 180)), n*n+Math.Cos(double.Parse(textBoxRotate.Text)*(Math.PI / 180))*(1-n*n), 0},
+                {0, 0, 0, 1}
+            };
+            Transform(polyhedron, move1);
+            Transform(polyhedron, tM);
+            Transform(polyhedron, move2);
+            refreshFigure();
+        }
+
         private void buttonClear_Click(object sender, EventArgs e)
         {
             g.Clear(Color.White);
@@ -504,6 +599,11 @@ namespace CGLab69.Lab6
             };
             Transform(polyhedron, tM);
             refreshFigure();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RotateCenter();
         }
     }
 }
