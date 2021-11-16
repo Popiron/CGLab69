@@ -17,6 +17,7 @@ namespace CGLab69.Lab6
     {
         Graphics g;
         Polyhedron polyhedron;
+        Polyhedron Graph;
         Figures currentFigure;
         Projections currentProjection;
         int midX;
@@ -397,6 +398,36 @@ namespace CGLab69.Lab6
         private void buttonDraw_Click(object sender, EventArgs e)
         {
             DrawL();
+        }
+
+        private void ShowGraph()
+        {
+            foreach (var r in Graph.useProjection(currentProjection).Edges)
+            {
+                g.DrawLine(Pens.Blue, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
+            }
+        }
+
+        private void buttonGraph_Click(object sender, EventArgs e)//test function z = x + y
+        {
+            float X0 = (float)double.Parse(textBoxRangeX0.Text);
+            float X1 = (float)double.Parse(textBoxRangeX1.Text);
+            float Y0 = (float)double.Parse(textBoxRangeY0.Text);
+            float Y1 = (float)double.Parse(textBoxRangeY1.Text);
+
+            float step = (float)double.Parse(textBoxGraphStep.Text);
+
+            Graph = new Polyhedron();
+
+            Point3D curr = new Point3D(0, 0, 0);
+            Point3D next = new Point3D(0, 0, 0);
+
+            for (double x = X0; x < X1; x+=step){
+                for (double y = Y0; y < Y1; y+=step){
+                    Graph.AddEdge(new Point3D(x, y, x + y), new Point3D(x, y + step, x + y));
+                }
+            }
+            ShowGraph();
         }
     }
 }
