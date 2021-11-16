@@ -77,15 +77,17 @@ namespace CGLab69.Lab6
             this.textBoxRotate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBoxRangeX0 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBoxRangeX1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxGraphStep = new System.Windows.Forms.TextBox();
+            this.buttonGraph = new System.Windows.Forms.Button();
             this.textBoxRangeY1 = new System.Windows.Forms.TextBox();
             this.textBoxRangeY0 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.buttonGraph = new System.Windows.Forms.Button();
-            this.textBoxGraphStep = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxRangeX1 = new System.Windows.Forms.TextBox();
+            this.textBoxRangeX0 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.figureBox.SuspendLayout();
             this.projectionBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -636,6 +638,8 @@ namespace CGLab69.Lab6
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.button2);
+            this.groupBox5.Controls.Add(this.comboBox1);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.textBoxGraphStep);
             this.groupBox5.Controls.Add(this.buttonGraph);
@@ -645,58 +649,50 @@ namespace CGLab69.Lab6
             this.groupBox5.Controls.Add(this.textBoxRangeX1);
             this.groupBox5.Controls.Add(this.textBoxRangeX0);
             this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Location = new System.Drawing.Point(1297, 288);
+            this.groupBox5.Location = new System.Drawing.Point(1297, 257);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(281, 100);
+            this.groupBox5.Size = new System.Drawing.Size(281, 131);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Function";
             // 
-            // textBoxRangeX0
+            // button2
             // 
-            this.textBoxRangeX0.Location = new System.Drawing.Point(79, 23);
-            this.textBoxRangeX0.Name = "textBoxRangeX0";
-            this.textBoxRangeX0.Size = new System.Drawing.Size(40, 23);
-            this.textBoxRangeX0.TabIndex = 2;
+            this.button2.Location = new System.Drawing.Point(189, 100);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Clear";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label9
+            // comboBox1
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(14, 26);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(59, 15);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "[x0, x1] = ";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "x + y",
+            "x*x + y"});
+            this.comboBox1.Location = new System.Drawing.Point(189, 22);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(73, 23);
+            this.comboBox1.TabIndex = 10;
             // 
-            // textBoxRangeX1
+            // label11
             // 
-            this.textBoxRangeX1.Location = new System.Drawing.Point(117, 23);
-            this.textBoxRangeX1.Name = "textBoxRangeX1";
-            this.textBoxRangeX1.Size = new System.Drawing.Size(40, 23);
-            this.textBoxRangeX1.TabIndex = 3;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(187, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(29, 15);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "step";
             // 
-            // textBoxRangeY1
+            // textBoxGraphStep
             // 
-            this.textBoxRangeY1.Location = new System.Drawing.Point(117, 52);
-            this.textBoxRangeY1.Name = "textBoxRangeY1";
-            this.textBoxRangeY1.Size = new System.Drawing.Size(40, 23);
-            this.textBoxRangeY1.TabIndex = 6;
-            // 
-            // textBoxRangeY0
-            // 
-            this.textBoxRangeY0.Location = new System.Drawing.Point(79, 52);
-            this.textBoxRangeY0.Name = "textBoxRangeY0";
-            this.textBoxRangeY0.Size = new System.Drawing.Size(40, 23);
-            this.textBoxRangeY0.TabIndex = 5;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 55);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 15);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "[y0, y1] = ";
+            this.textBoxGraphStep.Location = new System.Drawing.Point(222, 47);
+            this.textBoxGraphStep.Name = "textBoxGraphStep";
+            this.textBoxGraphStep.Size = new System.Drawing.Size(40, 23);
+            this.textBoxGraphStep.TabIndex = 8;
+            this.textBoxGraphStep.Text = "5";
             // 
             // buttonGraph
             // 
@@ -708,21 +704,55 @@ namespace CGLab69.Lab6
             this.buttonGraph.UseVisualStyleBackColor = true;
             this.buttonGraph.Click += new System.EventHandler(this.buttonGraph_Click);
             // 
-            // textBoxGraphStep
+            // textBoxRangeY1
             // 
-            this.textBoxGraphStep.Location = new System.Drawing.Point(222, 23);
-            this.textBoxGraphStep.Name = "textBoxGraphStep";
-            this.textBoxGraphStep.Size = new System.Drawing.Size(40, 23);
-            this.textBoxGraphStep.TabIndex = 8;
+            this.textBoxRangeY1.Location = new System.Drawing.Point(117, 52);
+            this.textBoxRangeY1.Name = "textBoxRangeY1";
+            this.textBoxRangeY1.Size = new System.Drawing.Size(40, 23);
+            this.textBoxRangeY1.TabIndex = 6;
+            this.textBoxRangeY1.Text = "300";
             // 
-            // label11
+            // textBoxRangeY0
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(189, 26);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(29, 15);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "step";
+            this.textBoxRangeY0.Location = new System.Drawing.Point(79, 52);
+            this.textBoxRangeY0.Name = "textBoxRangeY0";
+            this.textBoxRangeY0.Size = new System.Drawing.Size(40, 23);
+            this.textBoxRangeY0.TabIndex = 5;
+            this.textBoxRangeY0.Text = "100";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(14, 55);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 15);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "[y0, y1] = ";
+            // 
+            // textBoxRangeX1
+            // 
+            this.textBoxRangeX1.Location = new System.Drawing.Point(117, 23);
+            this.textBoxRangeX1.Name = "textBoxRangeX1";
+            this.textBoxRangeX1.Size = new System.Drawing.Size(40, 23);
+            this.textBoxRangeX1.TabIndex = 3;
+            this.textBoxRangeX1.Text = "100";
+            // 
+            // textBoxRangeX0
+            // 
+            this.textBoxRangeX0.Location = new System.Drawing.Point(79, 23);
+            this.textBoxRangeX0.Name = "textBoxRangeX0";
+            this.textBoxRangeX0.Size = new System.Drawing.Size(40, 23);
+            this.textBoxRangeX0.TabIndex = 2;
+            this.textBoxRangeX0.Text = "-100";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(14, 26);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(59, 15);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "[x0, x1] = ";
             // 
             // DimaForm
             // 
@@ -823,5 +853,7 @@ namespace CGLab69.Lab6
         private System.Windows.Forms.Button buttonGraph;
         private System.Windows.Forms.TextBox textBoxGraphStep;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button2;
     }
 }

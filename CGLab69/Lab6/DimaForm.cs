@@ -11,7 +11,7 @@ using System.Windows.Media.Media3D;
 
 namespace CGLab69.Lab6
 {
-    enum Figures { Tetrahedron, Hexahedron, Octahedron, };
+    enum Figures { Tetrahedron, Hexahedron, Octahedron, Graph};
 
     public partial class DimaForm : Form
     {
@@ -143,8 +143,11 @@ namespace CGLab69.Lab6
                 case Figures.Octahedron:
                     polyhedron = new Octahedron(t.Vertices);
                     break;
+                case Figures.Graph:
+                    polyhedron = new Graph(t.Vertices);
+                    break;
                 default:
-                    polyhedron = new Tetrahedron(t.Vertices);
+                    polyhedron = new Polyhedron(t.Vertices);
                     break;
             }
         }
@@ -400,16 +403,18 @@ namespace CGLab69.Lab6
             DrawL();
         }
 
-        private void ShowGraph()
-        {
-            foreach (var r in Graph.useProjection(currentProjection).Edges)
+        private void ClearGraph() {
+            foreach (var r in polyhedron.useProjection(currentProjection).Edges)
             {
-                g.DrawLine(Pens.Blue, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
+                g.DrawLine(Pens.White, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
             }
+            Graph = new Polyhedron();
         }
 
         private void buttonGraph_Click(object sender, EventArgs e)//test function z = x + y
         {
+            globalPen = Pens.Blue;
+            currentFigure = Figures.Graph;
             float X0 = (float)double.Parse(textBoxRangeX0.Text);
             float X1 = (float)double.Parse(textBoxRangeX1.Text);
             float Y0 = (float)double.Parse(textBoxRangeY0.Text);
@@ -417,17 +422,27 @@ namespace CGLab69.Lab6
 
             float step = (float)double.Parse(textBoxGraphStep.Text);
 
-            Graph = new Polyhedron();
+            polyhedron = new Polyhedron();
 
-            Point3D curr = new Point3D(0, 0, 0);
-            Point3D next = new Point3D(0, 0, 0);
+            Func<double, double, float> f = (x,y) => (float)(x + y);
+            switch (comboBox1.SelectedIndex) {
+                case 1:
+                    f = (x, y) => (float)((x*x + y));
+                    break;
+            }
 
             for (double x = X0; x < X1; x+=step){
                 for (double y = Y0; y < Y1; y+=step){
-                    Graph.AddEdge(new Point3D(x, y, x + y), new Point3D(x, y + step, x + y));
+                    polyhedron.AddEdge(new Point3D(x, y, f(x,y) ), new Point3D(x, y + step, f(x, y)));
                 }
             }
-            ShowGraph();
+            
+            refreshFigure();
+        }
+
+        private void button2_Click(object sender, EventArgs e){
+            ClearGraph();
+            globalPen = Pens.Black;
         }
     }
 }
