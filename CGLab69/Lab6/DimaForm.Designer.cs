@@ -39,6 +39,7 @@ namespace CGLab69.Lab6
             this.isometricRadioButton = new System.Windows.Forms.RadioButton();
             this.perspectiveRadioButton = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonScale = new System.Windows.Forms.Button();
@@ -82,13 +83,12 @@ namespace CGLab69.Lab6
             this.label9 = new System.Windows.Forms.Label();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.radioButtonDP = new System.Windows.Forms.RadioButton();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonRotation = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.radioButtonDP = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
             this.figureBox.SuspendLayout();
             this.projectionBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -245,6 +245,16 @@ namespace CGLab69.Lab6
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transformations";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(566, 86);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 29);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "RotateCenterLine";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // buttonClear
             // 
@@ -695,6 +705,17 @@ namespace CGLab69.Lab6
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Rotation figures";
             // 
+            // radioButtonDP
+            // 
+            this.radioButtonDP.AutoSize = true;
+            this.radioButtonDP.Location = new System.Drawing.Point(49, 29);
+            this.radioButtonDP.Name = "radioButtonDP";
+            this.radioButtonDP.Size = new System.Drawing.Size(112, 24);
+            this.radioButtonDP.TabIndex = 29;
+            this.radioButtonDP.TabStop = true;
+            this.radioButtonDP.Text = "Draw Points ";
+            this.radioButtonDP.UseVisualStyleBackColor = true;
+            // 
             // buttonCreate
             // 
             this.buttonCreate.Location = new System.Drawing.Point(54, 118);
@@ -744,27 +765,6 @@ namespace CGLab69.Lab6
             this.label10.Size = new System.Drawing.Size(171, 20);
             this.label10.TabIndex = 24;
             this.label10.Text = "Количество разбиений";
-            // 
-            // radioButtonDP
-            // 
-            this.radioButtonDP.AutoSize = true;
-            this.radioButtonDP.Location = new System.Drawing.Point(49, 29);
-            this.radioButtonDP.Name = "radioButtonDP";
-            this.radioButtonDP.Size = new System.Drawing.Size(112, 24);
-            this.radioButtonDP.TabIndex = 29;
-            this.radioButtonDP.TabStop = true;
-            this.radioButtonDP.Text = "Draw Points ";
-            this.radioButtonDP.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(566, 86);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 29);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "RotateCenterLine";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // DimaForm
             // 

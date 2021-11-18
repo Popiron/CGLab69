@@ -536,69 +536,133 @@ namespace CGLab69.Lab6
             points = new List<Point3D>();
         }
         List<Point3D> points = new List<Point3D>();
+        
         private void DimaForm_Click(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+           
            if (radioButtonDP.Checked)
-            { 
-            var p = new Point3D(e.X, e.Y, 0);
-            points.Add(p);
+            {
+                g.Clear(Color.White);
+                var p = new Point3D(e.X, e.Y, 10);
+                points.Add(p);
                 g.DrawEllipse(globalPen, e.X, e.Y, 5, 5);
+                
+                for (int i = 1; i < points.Count; i++)
+               
+                {
+                    
+                    g.DrawLine(globalPen,new Point((int)points[i - 1].X, (int)points[i - 1].Y), new Point((int)points[i].X, (int)points[i].Y));
+                    
+                 }
+                g.DrawLine(globalPen, new Point((int)points[points.Count - 1].X, (int)points[points.Count - 1].Y), new Point((int)points[0].X, (int)points[0].Y));
             }
+           
         }
+
         private void buttonRotation_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private List<Point3D> rotateP(double angle)
+        {
             polyhedron = new Polyhedron(points);
+            double[,] tM;
             if (comboBox1.SelectedIndex == 0) // x
             {
-                double[,] tM =
+                tM = new double[,]
             {
                 {1, 0, 0, 0},
-                {0, Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0},
-                {0, -Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0},
+                {0, Math.Cos(angle * (Math.PI / 180)), -Math.Sin(angle * (Math.PI / 180)), 0},
+                {0, Math.Sin(angle * (Math.PI / 180)), Math.Cos(angle * (Math.PI / 180)), 0},
                 {0, 0, 0, 1}
             };
-                Transform(polyhedron, tM);
+               
             }
             else
                 if (comboBox1.SelectedIndex == 1) //y
             {
-                double[,] tM =
+                tM = new double[,]
              {
-                {Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0, Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0 },
+                {Math.Cos(angle * (Math.PI / 180)), 0, Math.Sin(angle * (Math.PI / 180)), 0 },
                 {0, 1, 0, 0 },
-                {-Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0, Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0 },
+                {-Math.Sin(angle * (Math.PI / 180)), 0, Math.Cos(angle * (Math.PI / 180)), 0 },
                 {0, 0, 0, 1}
             };
-                Transform(polyhedron, tM);
-            } else
+               
+            }
+            else
                   if (comboBox1.SelectedIndex == 2) //z
-              {
-                double[,] tM =
+            {
+                tM = new double[,]
                 {
-                {Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), -Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0, 0},
-                {Math.Sin(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), Math.Cos(360.0d/(double)numericUpDown5.Value * (Math.PI / 180)), 0, 0},
+                {Math.Cos(angle * (Math.PI / 180)), -Math.Sin(angle * (Math.PI / 180)), 0, 0},
+                {Math.Sin(angle * (Math.PI / 180)), Math.Cos(angle * (Math.PI / 180)), 0, 0},
                 {0, 0, 1, 0},
                 {0, 0, 0, 1}
                 };
-                Transform(polyhedron, tM);
                 
-            }
-           
-            refreshFigure();
-        }
 
-        private void buttonCreate_Click(object sender, EventArgs e)
-        {
-            polyhedron = new Polyhedron(points);
-            double[,] tM =
-               {
+            }
+            else
+            {
+                tM = new double[,]
+              {
                 {1, 0, 0, 0},
                 {0, 1, 0, 0},
                 {0, 0, 1, 0},
                 {0, 0, 0, 1}
+                };
+                
+            }
+            double[,] move1 =
+                       {
+                { 1, 0, 0, -Center(polyhedron).X},
+                { 0, 1, 0, -Center(polyhedron).Y},
+                { 0, 0, 1, -Center(polyhedron).Z},
+                { 0, 0, 0, 1}
             };
             Transform(polyhedron, tM);
+            Transform(polyhedron, move1);
             refreshFigure();
+            List<Point3D> result = new List<Point3D>();
+            foreach (var x in polyhedron.Vertices)
+            {
+                result.Add(x);
+            }
+            return result;
+        }
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            
+            int cnt = points.Count;
+            double angle = 360.0d / ((int)numericUpDown5.Value);
+            List<Point3D> fig = new List<Point3D>();
+            fig.AddRange(points);
+            for (int i = 1; i < ((int)numericUpDown5.Value); i++)
+            {
+                fig.AddRange(rotateP(angle * i));
+            }
+
+            Polyhedron p = new Polyhedron(fig);
+
+            for (int i = 0; i < ((int)numericUpDown5.Value); i++)
+            {
+                for (int j = 0; j < cnt; j++)
+                {
+                    var current = j + i * cnt;
+                    if ((current + 1) % cnt == 0)
+                    { p.AddEdges(current, new List<int> { (current + cnt) % fig.Count });
+                    }
+                    else
+                    {
+                        p.add
+                    } 
+                        
+                }
+            }
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)

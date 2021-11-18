@@ -29,5 +29,6 @@ namespace CGLab69.models
         {
             Edges.Add(edge);
         }
+
     }
 }
