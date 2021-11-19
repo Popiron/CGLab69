@@ -632,6 +632,7 @@ namespace CGLab69.Lab6
             }
             return result;
         }
+        /*
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             
@@ -661,9 +662,8 @@ namespace CGLab69.Lab6
                         
                 }
             }
-
-
         }
+        */
 
         private void button2_Click(object sender, EventArgs e)
         {
