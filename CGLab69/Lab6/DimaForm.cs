@@ -652,16 +652,16 @@ namespace CGLab69.Lab6
                 {
                     var current = j + i * cnt;
                     if ((current + 1) % cnt == 0)
-                    { p.AddEdges(current, new List<int> { (current + cnt) % fig.Count });
+                    { p.AddEdges(fig[current], new List<Point3D> { fig[(current + cnt) % fig.Count] });
                     }
                     else
                     {
-                        p.add
+                        p.AddEdges(fig[current], new List<Point3D> { fig[current + 1], fig[(current + cnt) % fig.Count] });
                     } 
                         
                 }
             }
-
+            polyhedron = p;
 
         }
 
