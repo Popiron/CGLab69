@@ -808,25 +808,66 @@ namespace CGLab69.Lab6
             
         }
 
+        private void buttonRight_Click(object sender, EventArgs e)
+        {
+            RotateCenterY(10);
+            /*RotateCenterY(-0.7);
+            double[,] tM =
+            {
+                {1, 0, 0, -20},
+                {0, 1, 0, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1}
+            };
+            Transform(polyhedron, tM);
+            refreshFigure();*/
+        }
         private void buttonLeft_Click(object sender, EventArgs e)
         {
             RotateCenterY(-10);
+           /* RotateCenterY(0.7);
+            double[,] tM =
+            {
+                {1, 0, 0, 20},
+                {0, 1, 0, 0},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1}
+            };
+            Transform(polyhedron, tM);
+            refreshFigure();*/
+
         }
 
         private void buttonUp_Click(object sender, EventArgs e)
         {
+           
             RotateCenterX(-10);
+           /* double[,] tM =
+            {
+                {1, 0, 0, 0},
+                {0, 1, 0, 14},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1}
+            };
+            Transform(polyhedron, tM);
+            refreshFigure(); */
         }
 
         private void buttonDown_Click(object sender, EventArgs e)
         {
             RotateCenterX(10);
+            /*double[,] tM =
+            {
+                {1, 0, 0, 0},
+                {0, 1, 0, -14},
+                {0, 0, 1, 0},
+                {0, 0, 0, 1}
+            };
+            Transform(polyhedron, tM);
+            refreshFigure(); */
         }
 
-        private void buttonRight_Click(object sender, EventArgs e)
-        {
-            RotateCenterY(10);
-        }
+        
         private void buttonW_Click(object sender, EventArgs e)
         {
             double[,] tM =
@@ -841,6 +882,7 @@ namespace CGLab69.Lab6
         }
         private void buttonA_Click(object sender, EventArgs e)
         {
+            RotateCenterY(-0.878);
             double[,] tM =
             {
                 {1, 0, 0, 20},
@@ -854,6 +896,7 @@ namespace CGLab69.Lab6
 
         private void buttonD_Click(object sender, EventArgs e)
         {
+            RotateCenterY(0.878);
             double[,] tM =
          {
                 {1, 0, 0, -20},
