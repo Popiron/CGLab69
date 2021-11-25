@@ -810,7 +810,7 @@ namespace CGLab69.Lab6
 
         private void buttonRight_Click(object sender, EventArgs e)
         {
-            RotateCenterY(10);
+            RotateCenterY(-10);
             /*RotateCenterY(-0.7);
             double[,] tM =
             {
@@ -824,7 +824,7 @@ namespace CGLab69.Lab6
         }
         private void buttonLeft_Click(object sender, EventArgs e)
         {
-            RotateCenterY(-10);
+            RotateCenterY(10);
            /* RotateCenterY(0.7);
             double[,] tM =
             {
