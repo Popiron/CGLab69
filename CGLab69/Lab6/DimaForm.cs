@@ -744,5 +744,10 @@ namespace CGLab69.Lab6
         {
             DemoOct();
         }
+
+        private void buttonDemoOct_Click_1(object sender, EventArgs e)
+        {
+            DemoOct();
+        }
     }
 }
