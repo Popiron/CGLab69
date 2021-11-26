@@ -89,6 +89,24 @@ namespace CGLab69.Lab6
             this.label11 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+<<<<<<< Updated upstream
+=======
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.buttonLeft = new System.Windows.Forms.Button();
+            this.buttonRight = new System.Windows.Forms.Button();
+            this.buttonDown = new System.Windows.Forms.Button();
+            this.buttonUp = new System.Windows.Forms.Button();
+            this.buttonA = new System.Windows.Forms.Button();
+            this.buttonD = new System.Windows.Forms.Button();
+            this.buttonS = new System.Windows.Forms.Button();
+            this.buttonW = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.buttonDemoOct = new System.Windows.Forms.Button();
+>>>>>>> Stashed changes
             this.figureBox.SuspendLayout();
             this.projectionBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -665,7 +683,11 @@ namespace CGLab69.Lab6
             // label15
             // 
             this.label15.AutoSize = true;
+<<<<<<< Updated upstream
             this.label15.Location = new System.Drawing.Point(109, 44);
+=======
+            this.label15.Location = new System.Drawing.Point(107, 52);
+>>>>>>> Stashed changes
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(0, 15);
             this.label15.TabIndex = 0;
@@ -673,7 +695,11 @@ namespace CGLab69.Lab6
             // label14
             // 
             this.label14.AutoSize = true;
+<<<<<<< Updated upstream
             this.label14.Location = new System.Drawing.Point(109, 65);
+=======
+            this.label14.Location = new System.Drawing.Point(107, 74);
+>>>>>>> Stashed changes
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(0, 15);
             this.label14.TabIndex = 15;
@@ -688,7 +714,11 @@ namespace CGLab69.Lab6
             // 
             // numericUpDown5
             // 
+<<<<<<< Updated upstream
             this.numericUpDown5.Location = new System.Drawing.Point(199, 38);
+=======
+            this.numericUpDown5.Location = new System.Drawing.Point(196, 47);
+>>>>>>> Stashed changes
             this.numericUpDown5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(52, 23);
@@ -706,17 +736,26 @@ namespace CGLab69.Lab6
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Controls.Add(this.label15);
+<<<<<<< Updated upstream
             this.groupBox5.Location = new System.Drawing.Point(1297, 272);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Size = new System.Drawing.Size(281, 118);
+=======
+            this.groupBox5.Location = new System.Drawing.Point(1297, 260);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Size = new System.Drawing.Size(281, 129);
+>>>>>>> Stashed changes
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Rotation figures";
             // 
             // radioButtonDP
             // 
+<<<<<<< Updated upstream
             this.radioButtonDP.AutoSize = true;
             this.radioButtonDP.Location = new System.Drawing.Point(43, 22);
             this.radioButtonDP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -730,17 +769,57 @@ namespace CGLab69.Lab6
             // buttonCreate
             // 
             this.buttonCreate.Location = new System.Drawing.Point(47, 88);
+=======
+            this.button3.Location = new System.Drawing.Point(193, 22);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(54, 22);
+            this.button3.TabIndex = 29;
+            this.button3.Text = "Add";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(129, 25);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(14, 15);
+            this.label13.TabIndex = 30;
+            this.label13.Text = "Z";
+            // 
+            // buttonCreate
+            // 
+            this.buttonCreate.Location = new System.Drawing.Point(45, 98);
+>>>>>>> Stashed changes
             this.buttonCreate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(82, 22);
             this.buttonCreate.TabIndex = 28;
             this.buttonCreate.Text = "Create";
             this.buttonCreate.UseVisualStyleBackColor = true;
+<<<<<<< Updated upstream
             //this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonRotation
             // 
             this.buttonRotation.Location = new System.Drawing.Point(151, 88);
+=======
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(75, 25);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(14, 15);
+            this.label16.TabIndex = 29;
+            this.label16.Text = "Y";
+            // 
+            // buttonRotation
+            // 
+            this.buttonRotation.Location = new System.Drawing.Point(149, 98);
+>>>>>>> Stashed changes
             this.buttonRotation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonRotation.Name = "buttonRotation";
             this.buttonRotation.Size = new System.Drawing.Size(82, 22);
@@ -749,15 +828,42 @@ namespace CGLab69.Lab6
             this.buttonRotation.UseVisualStyleBackColor = true;
             this.buttonRotation.Click += new System.EventHandler(this.buttonRotation_Click);
             // 
+<<<<<<< Updated upstream
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(36, 65);
+=======
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(16, 26);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(14, 15);
+            this.label17.TabIndex = 28;
+            this.label17.Text = "X";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(33, 74);
+>>>>>>> Stashed changes
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(87, 15);
             this.label11.TabIndex = 26;
             this.label11.Text = "Ось вращения";
             // 
+<<<<<<< Updated upstream
+=======
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(150, 22);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(34, 23);
+            this.textBox2.TabIndex = 26;
+            // 
+>>>>>>> Stashed changes
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -765,26 +871,215 @@ namespace CGLab69.Lab6
             "X",
             "Y",
             "Z"});
+<<<<<<< Updated upstream
             this.comboBox1.Location = new System.Drawing.Point(199, 63);
+=======
+            this.comboBox1.Location = new System.Drawing.Point(196, 72);
+>>>>>>> Stashed changes
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(52, 23);
             this.comboBox1.TabIndex = 25;
             // 
+<<<<<<< Updated upstream
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(36, 44);
+=======
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(90, 22);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(34, 23);
+            this.textBox3.TabIndex = 27;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(33, 52);
+>>>>>>> Stashed changes
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(134, 15);
             this.label10.TabIndex = 24;
             this.label10.Text = "Количество разбиений";
             // 
+<<<<<<< Updated upstream
+=======
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(37, 22);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(34, 23);
+            this.textBox4.TabIndex = 25;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(85, 22);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(0, 15);
+            this.label18.TabIndex = 24;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Controls.Add(this.label12);
+            this.groupBox6.Controls.Add(this.buttonLeft);
+            this.groupBox6.Controls.Add(this.buttonRight);
+            this.groupBox6.Controls.Add(this.buttonDown);
+            this.groupBox6.Controls.Add(this.buttonUp);
+            this.groupBox6.Controls.Add(this.buttonA);
+            this.groupBox6.Controls.Add(this.buttonD);
+            this.groupBox6.Controls.Add(this.buttonS);
+            this.groupBox6.Controls.Add(this.buttonW);
+            this.groupBox6.Controls.Add(this.label24);
+            this.groupBox6.Location = new System.Drawing.Point(1297, 148);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox6.Size = new System.Drawing.Size(281, 114);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Camera";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(181, 27);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(32, 15);
+            this.label19.TabIndex = 38;
+            this.label19.Text = "View";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(37, 27);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(50, 15);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "Position";
+            // 
+            // buttonLeft
+            // 
+            this.buttonLeft.Location = new System.Drawing.Point(139, 72);
+            this.buttonLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonLeft.Name = "buttonLeft";
+            this.buttonLeft.Size = new System.Drawing.Size(39, 22);
+            this.buttonLeft.TabIndex = 36;
+            this.buttonLeft.Text = "←";
+            this.buttonLeft.UseVisualStyleBackColor = true;
+            this.buttonLeft.Click += new System.EventHandler(this.buttonLeft_Click);
+            // 
+            // buttonRight
+            // 
+            this.buttonRight.Location = new System.Drawing.Point(226, 72);
+            this.buttonRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonRight.Name = "buttonRight";
+            this.buttonRight.Size = new System.Drawing.Size(39, 22);
+            this.buttonRight.TabIndex = 35;
+            this.buttonRight.Text = "→";
+            this.buttonRight.UseVisualStyleBackColor = true;
+            this.buttonRight.Click += new System.EventHandler(this.buttonRight_Click);
+            // 
+            // buttonDown
+            // 
+            this.buttonDown.Location = new System.Drawing.Point(181, 72);
+            this.buttonDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonDown.Name = "buttonDown";
+            this.buttonDown.Size = new System.Drawing.Size(39, 22);
+            this.buttonDown.TabIndex = 34;
+            this.buttonDown.Text = "↓";
+            this.buttonDown.UseVisualStyleBackColor = true;
+            this.buttonDown.Click += new System.EventHandler(this.buttonDown_Click);
+            // 
+            // buttonUp
+            // 
+            this.buttonUp.Location = new System.Drawing.Point(181, 44);
+            this.buttonUp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonUp.Name = "buttonUp";
+            this.buttonUp.Size = new System.Drawing.Size(39, 22);
+            this.buttonUp.TabIndex = 33;
+            this.buttonUp.Text = "↑";
+            this.buttonUp.UseVisualStyleBackColor = true;
+            this.buttonUp.Click += new System.EventHandler(this.buttonUp_Click);
+            // 
+            // buttonA
+            // 
+            this.buttonA.Location = new System.Drawing.Point(1, 72);
+            this.buttonA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonA.Name = "buttonA";
+            this.buttonA.Size = new System.Drawing.Size(39, 22);
+            this.buttonA.TabIndex = 32;
+            this.buttonA.Text = "A";
+            this.buttonA.UseVisualStyleBackColor = true;
+            this.buttonA.Click += new System.EventHandler(this.buttonA_Click);
+            // 
+            // buttonD
+            // 
+            this.buttonD.Location = new System.Drawing.Point(88, 72);
+            this.buttonD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonD.Name = "buttonD";
+            this.buttonD.Size = new System.Drawing.Size(39, 22);
+            this.buttonD.TabIndex = 31;
+            this.buttonD.Text = "D";
+            this.buttonD.UseVisualStyleBackColor = true;
+            this.buttonD.Click += new System.EventHandler(this.buttonD_Click);
+            // 
+            // buttonS
+            // 
+            this.buttonS.Location = new System.Drawing.Point(43, 72);
+            this.buttonS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonS.Name = "buttonS";
+            this.buttonS.Size = new System.Drawing.Size(39, 22);
+            this.buttonS.TabIndex = 30;
+            this.buttonS.Text = "S";
+            this.buttonS.UseVisualStyleBackColor = true;
+            this.buttonS.Click += new System.EventHandler(this.buttonS_Click);
+            // 
+            // buttonW
+            // 
+            this.buttonW.Location = new System.Drawing.Point(43, 44);
+            this.buttonW.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonW.Name = "buttonW";
+            this.buttonW.Size = new System.Drawing.Size(39, 22);
+            this.buttonW.TabIndex = 29;
+            this.buttonW.Text = "W";
+            this.buttonW.UseVisualStyleBackColor = true;
+            this.buttonW.Click += new System.EventHandler(this.buttonW_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(0, 76);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(0, 15);
+            this.label24.TabIndex = 23;
+            // 
+            // buttonDemoOct
+            // 
+            this.buttonDemoOct.Location = new System.Drawing.Point(5, 13);
+            this.buttonDemoOct.Name = "buttonDemoOct";
+            this.buttonDemoOct.Size = new System.Drawing.Size(75, 23);
+            this.buttonDemoOct.TabIndex = 9;
+            this.buttonDemoOct.Text = "DemoOct";
+            this.buttonDemoOct.UseVisualStyleBackColor = true;
+            this.buttonDemoOct.Click += new System.EventHandler(this.buttonDemoOct_Click);
+            // 
+>>>>>>> Stashed changes
             // DimaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1580, 525);
+<<<<<<< Updated upstream
+=======
+            this.Controls.Add(this.buttonDemoOct);
+            this.Controls.Add(this.groupBox6);
+>>>>>>> Stashed changes
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -884,5 +1179,29 @@ namespace CGLab69.Lab6
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.RadioButton radioButtonDP;
         private System.Windows.Forms.Button button2;
+<<<<<<< Updated upstream
+=======
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button buttonLeft;
+        private System.Windows.Forms.Button buttonRight;
+        private System.Windows.Forms.Button buttonDown;
+        private System.Windows.Forms.Button buttonUp;
+        private System.Windows.Forms.Button buttonA;
+        private System.Windows.Forms.Button buttonD;
+        private System.Windows.Forms.Button buttonS;
+        private System.Windows.Forms.Button buttonW;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button buttonDemoOct;
+>>>>>>> Stashed changes
     }
 }

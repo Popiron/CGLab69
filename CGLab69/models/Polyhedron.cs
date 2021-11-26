@@ -17,6 +17,10 @@ namespace CGLab69.models
     public class Polyhedron
     {
         /// <summary>
+        /// Грани
+        /// </summary>
+        public List<Polyhedron> Faces{ get; }
+        /// <summary>
         /// Прямые (ребра)
         /// </summary>
         public List<Edge> Edges { get; }
@@ -31,6 +35,7 @@ namespace CGLab69.models
 
         public Polyhedron()
         {
+            Faces = new List<Polyhedron>();
             Edges = new List<Edge>();
             Vertices = new List<Point3D>();
             AdjacencyMatrix = new Dictionary<Point3D, List<Point3D>>();
@@ -38,6 +43,7 @@ namespace CGLab69.models
 
         public Polyhedron(List<Point3D> points) : this()
         {
+            Faces = new List<Polyhedron>();
             Vertices = points;
             foreach (var p in points)
                 AdjacencyMatrix.Add(p, new List<Point3D>());
@@ -62,6 +68,19 @@ namespace CGLab69.models
         {
             foreach (var p in other)
                 AddEdge(point, p);
+        }
+
+        public void AddFace(List<Point3D> points)
+        {
+            Polyhedron f = new Polyhedron(points);
+
+            for (int i = 0; i < points.Count - 1; i++)
+            {
+                f.AddEdge(points[i], points[i + 1]);
+            }
+            f.AddEdge(points[points.Count - 1], points[0]);
+
+            Faces.Add(f);
         }
 
         public Polyhedron useProjection(Projections projection)

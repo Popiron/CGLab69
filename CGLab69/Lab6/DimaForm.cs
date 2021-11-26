@@ -65,6 +65,61 @@ namespace CGLab69.Lab6
             }
         }
 
+        private void loadVisible()
+        {
+            g.Clear(Color.White);
+            switch (currentFigure)
+            {
+                case Figures.Tetrahedron:
+                    polyhedron = new Tetrahedron();
+                    break;
+                case Figures.Hexahedron:
+                    polyhedron = new Hexahedron();
+                    break;
+                case Figures.Octahedron:
+                    polyhedron = new Octahedron();
+                    break;
+                default:
+                    polyhedron = new Tetrahedron();
+                    break;
+            }
+            foreach (var face in polyhedron.Faces)
+            {
+                if (Center(face).Z > Center(polyhedron).Z)
+                {
+                    continue;
+                }
+                foreach (var edge in face.useProjection(currentProjection).Edges)
+                {
+                    g.DrawLine(globalPen, (int)(edge.First.X + midX), (int)(edge.First.Y + midY), (int)(edge.Second.X + midX), (int)(edge.Second.Y + midY));
+                }
+            }
+        }
+
+        private void DemoOct()
+        {
+            g.Clear(Color.White);
+            currentFigure = Figures.Octahedron;
+            polyhedron = new Octahedron();
+            
+            foreach (var face in polyhedron.Faces)
+            {
+                if (Center(face).Z > Center(polyhedron).Z) 
+                {
+                    continue;
+                }
+                foreach (var edge in face.useProjection(currentProjection).Edges)
+                {
+                    g.DrawLine(globalPen, (int)(edge.First.X + midX), (int)(edge.First.Y + midY), (int)(edge.Second.X + midX), (int)(edge.Second.Y + midY));
+                }
+            }
+            while (true) 
+            {
+                RotateCenter();
+            }
+        }
+
+        /*
         private void refreshFigure()
         {
             g.Clear(Color.White);
@@ -73,8 +128,23 @@ namespace CGLab69.Lab6
             {
                 g.DrawLine(globalPen, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
             }
-        }
+        }*/
+        private void refreshFigure()
+        {
+            g.Clear(Color.White);
 
+            foreach (var face in polyhedron.Faces)
+            {
+                if (Center(face).Z > Center(polyhedron).Z)
+                {
+                    continue;
+                }
+                foreach (var edge in face.useProjection(currentProjection).Edges)
+                {
+                    g.DrawLine(globalPen, (int)(edge.First.X + midX), (int)(edge.First.Y + midY), (int)(edge.Second.X + midX), (int)(edge.Second.Y + midY));
+                }
+            }
+        }
         private void eraseLine()
         {
             foreach (var r in line.useProjection(currentProjection).Edges)
@@ -668,6 +738,11 @@ namespace CGLab69.Lab6
         private void button2_Click(object sender, EventArgs e)
         {
             RotateCenter();
+        }
+
+        private void buttonDemoOct_Click(object sender, EventArgs e)
+        {
+            DemoOct();
         }
     }
 }
