@@ -436,7 +436,15 @@ namespace CGLab69.Lab6
                     polyhedron.AddEdge(new Point3D(x, y, f(x,y) ), new Point3D(x, y + step, f(x, y)));
                 }
             }
-            
+
+            for  (double y = Y0; y < Y1; y += step)
+            {
+                for (double x = X0; x < X1; x += step)
+                {
+                    polyhedron.AddEdge(new Point3D(x, y, f(x, y)), new Point3D(x + step, y, f(x, y)));
+                }
+            }
+
             refreshFigure();
         }
 
