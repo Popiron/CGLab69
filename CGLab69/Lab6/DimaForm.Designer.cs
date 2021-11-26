@@ -108,6 +108,11 @@ namespace CGLab69.Lab6
             this.buttonS = new System.Windows.Forms.Button();
             this.buttonW = new System.Windows.Forms.Button();
             this.label24 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.buttonUpload = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
             this.figureBox.SuspendLayout();
             this.projectionBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -121,6 +126,8 @@ namespace CGLab69.Lab6
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // figureBox
@@ -974,11 +981,60 @@ namespace CGLab69.Lab6
             this.label24.Size = new System.Drawing.Size(0, 20);
             this.label24.TabIndex = 23;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.pictureBox1);
+            this.groupBox7.Controls.Add(this.button5);
+            this.groupBox7.Controls.Add(this.buttonUpload);
+            this.groupBox7.Controls.Add(this.label22);
+            this.groupBox7.Location = new System.Drawing.Point(1482, 40);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(321, 152);
+            this.groupBox7.TabIndex = 9;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Texturing";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(106, 26);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(206, 120);
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(6, 102);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(94, 29);
+            this.button5.TabIndex = 25;
+            this.button5.Text = "Apply";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpload
+            // 
+            this.buttonUpload.Location = new System.Drawing.Point(6, 67);
+            this.buttonUpload.Name = "buttonUpload";
+            this.buttonUpload.Size = new System.Drawing.Size(94, 29);
+            this.buttonUpload.TabIndex = 24;
+            this.buttonUpload.Text = "Upload";
+            this.buttonUpload.UseVisualStyleBackColor = true;
+            this.buttonUpload.Click += new System.EventHandler(this.buttonUpload_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(0, 101);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(0, 20);
+            this.label22.TabIndex = 23;
+            // 
             // DimaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1806, 700);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -1017,6 +1073,9 @@ namespace CGLab69.Lab6
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1102,5 +1161,10 @@ namespace CGLab69.Lab6
         private System.Windows.Forms.Button buttonS;
         private System.Windows.Forms.Button buttonW;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button buttonUpload;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

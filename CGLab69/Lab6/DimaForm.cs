@@ -808,6 +808,8 @@ namespace CGLab69.Lab6
             
         }
 
+
+
         private void buttonRight_Click(object sender, EventArgs e)
         {
             RotateCenterY(-10);
@@ -919,6 +921,30 @@ namespace CGLab69.Lab6
             };
             Transform(polyhedron, tM);
             refreshFigure();
+        }
+        private void Texturing(Polyhedron p)
+        {
+            Bitmap image = new Bitmap(pictureBox1.Size.Width - 1, pictureBox1.Size.Height - 1);
+        }
+
+        private void buttonUpload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                var dialog = new OpenFileDialog();
+                dialog.Filter = "jpg files(*.jpg)|*.jpg| PNG files|*.png| All files(*.*)|*.*";
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    pictureBox1.LoadAsync(dialog.FileName);
+                    
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error");
+            }
         }
     }
 }
