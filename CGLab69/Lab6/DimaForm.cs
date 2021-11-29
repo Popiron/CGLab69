@@ -27,7 +27,8 @@ namespace CGLab69.Lab6
         public DimaForm()
         {
             InitializeComponent();
-            g = CreateGraphics();
+            mainPictureBox.Image = new Bitmap(mainPictureBox.Width, mainPictureBox.Height);
+            ClearPicture();
         }
 
 
@@ -41,9 +42,16 @@ namespace CGLab69.Lab6
             loadFigure();
         }
 
+        private void ClearPicture()
+        {
+            g = Graphics.FromImage(mainPictureBox.Image);
+            g.Clear(mainPictureBox.BackColor);
+            mainPictureBox.Image = mainPictureBox.Image;
+        }
+
         private void loadFigure()
         {
-            g.Clear(Color.White);
+            ClearPicture();
             switch (currentFigure)
             {
                 case Figures.Tetrahedron:
@@ -67,7 +75,7 @@ namespace CGLab69.Lab6
 
         private void refreshFigure()
         {
-            g.Clear(Color.White);
+            ClearPicture();
 
             foreach (var r in polyhedron.useProjection(currentProjection).Edges)
             {
@@ -532,7 +540,7 @@ namespace CGLab69.Lab6
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            g.Clear(Color.White);
+            ClearPicture();
             points = new List<Point3D>();
         }
         List<Point3D> points = new List<Point3D>();
@@ -762,8 +770,8 @@ namespace CGLab69.Lab6
             {
                 double z = double.Parse(textBox2.Text);
                 double y = double.Parse(textBox3.Text);
-                double x = double.Parse(textBox4.Text); 
-                g.Clear(Color.White);
+                double x = double.Parse(textBox4.Text);
+                ClearPicture();
                 var p = new Point3D(x, y, z);
                 points.Add(p);
                 g.DrawEllipse(globalPen,(int)x,(int)y,5,5);
