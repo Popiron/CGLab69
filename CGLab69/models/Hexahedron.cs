@@ -18,22 +18,15 @@ namespace CGLab69.models
         Point3D f = new Point3D(300, 300, 0);
         Point3D g = new Point3D(300, 300, 300);
         Point3D h = new Point3D(0, 300, 300);
-        Point3D i = new Point3D(150, 0, 150);
-        Point3D j = new Point3D(150, 300, 150);
 
         public Hexahedron() : base()
         {
-            AddEdges(a, new List<Point3D> { e, b });
-            AddEdges(b, new List<Point3D> { f, c });
-            AddEdges(c, new List<Point3D> { g, d });
-            AddEdges(d, new List<Point3D> { a, h });
-            AddEdges(e, new List<Point3D> { f });
-            AddEdges(f, new List<Point3D> { g });
-            AddEdges(g, new List<Point3D> { h });
-            AddEdges(h, new List<Point3D> { e });
-
-            this.Vertices.Add(this.i);
-            this.Vertices.Add(this.j);
+            AddFace(new[] { a, b, f, e });
+            AddFace(new[] { b, c, g, f });
+            AddFace(new[] { d, c, g, h });
+            AddFace(new[] { a, d, h, e });
+            AddFace(new[] { a, b, c, d });
+            AddFace(new[] { e, f, g, h });
 
         }
 
@@ -49,14 +42,12 @@ namespace CGLab69.models
             g = points[7];//5
             h = points[5];//7
 
-            AddEdges(a, new List<Point3D> { e, b });
-            AddEdges(b, new List<Point3D> { f, c });
-            AddEdges(c, new List<Point3D> { g, d });
-            AddEdges(d, new List<Point3D> { a, h });
-            AddEdges(e, new List<Point3D> { f });
-            AddEdges(f, new List<Point3D> { g });
-            AddEdges(g, new List<Point3D> { h });
-            AddEdges(h, new List<Point3D> { e });
+            AddFace(new[] { a, b, f, e });
+            AddFace(new[] { b, c, g, f });
+            AddFace(new[] { d, c, g, h });
+            AddFace(new[] { a, d, h, e });
+            AddFace(new[] { a, b, c, d });
+            AddFace(new[] { e, f, g, h });
         }
     }
 }

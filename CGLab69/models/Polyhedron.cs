@@ -8,7 +8,7 @@ using System.Windows.Media.Media3D;
 namespace CGLab69.models
 {
 
-    public enum Projections { Perspective, Isometric, Trimetric, Dimetric }
+    public enum Projections { Perspective, Isometric, Trimetric, Dimetric,}
 
     /// <summary>
     /// Многогранник
@@ -17,54 +17,76 @@ namespace CGLab69.models
     public class Polyhedron
     {
         /// <summary>
+        /// Грани
+        /// </summary>
+        public List<Face> Faces { get; set; }
+
+        /// <summary>
         /// Прямые (ребра)
         /// </summary>
-        public List<Edge> Edges { get; }
+        public virtual IEnumerable<Edge> Edges
+        {
+            get
+            {
+                foreach (var f in Faces)
+                {
+                    foreach (var e in f.Edges)
+                    {
+                        yield return e;
+                    }
+                }
+            }
+        }
+
+
         /// <summary>
         /// Вершины
         /// </summary>
-        public List<Point3D> Vertices { get; set; }
-        /// <summary>
-        /// Матрица смежности
-        /// </summary>
-        public Dictionary<Point3D, List<Point3D>> AdjacencyMatrix { get; }
+        public virtual IEnumerable<Point3D> Vertices
+        {
+            get
+            {
+                foreach (var f in Faces)
+                {
+                    foreach (var e in f.Edges)
+                    {
+                        yield return e.First;
+                    }
+                }
+            }
+        }
 
         public Polyhedron()
         {
-            Edges = new List<Edge>();
-            Vertices = new List<Point3D>();
-            AdjacencyMatrix = new Dictionary<Point3D, List<Point3D>>();
+            Faces = new List<Face>();
         }
 
-        public Polyhedron(List<Point3D> points) : this()
+        public Polyhedron(List<Face> faces)
         {
-            Vertices = points;
-            foreach (var p in points)
-                AdjacencyMatrix.Add(p, new List<Point3D>());
+            Faces = faces;
         }
 
-        public void AddEdge(Point3D p1, Point3D p2)
+        public void AddFace(Point3D[] points)
         {
-            if (!Vertices.Contains(p1))
-                Vertices.Add(p1);
-            if (!Vertices.Contains(p2))
-                Vertices.Add(p2);
-            if (!Edges.Contains(new Edge(p1, p2)))
-                Edges.Add(new Edge(p1, p2));
-            if (!AdjacencyMatrix.ContainsKey(p1))
-                AdjacencyMatrix.Add(p1, new List<Point3D> { p2 });
-            else
-                AdjacencyMatrix[p1].Add(p2);
+            var side = new Face();
+            for (int i = 0; i < points.Length - 1; i++)
+            {
 
+                side.AddEdge(new Edge(points[i], points[i + 1]));
+            }
+            side.AddEdge(new Edge(points.Last(), points.First()));
+            Faces.Add(side);
         }
 
-        public void AddEdges(Point3D point, List<Point3D> other)
+        public Point3D FigureCenter()
         {
-            foreach (var p in other)
-                AddEdge(point, p);
+            var x = Vertices.Average(point => point.X);
+            var y = Vertices.Average(point => point.Y);
+            var z = Vertices.Average(point => point.Z);
+            return new Point3D(x, y, z);
         }
 
-        public Polyhedron useProjection(Projections projection)
+        public Polyhedron UseProjection(Projections projection)
         {
             Matrix3D projMatrix;
             switch (projection)
@@ -85,24 +107,57 @@ namespace CGLab69.models
                     projMatrix = new Matrix3D(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.001, 0, 0, 0, 1);
                     break;
             }
-            Polyhedron result = new Polyhedron();
-            foreach (var val in AdjacencyMatrix)
+
+            return UseCustomProjection(projMatrix);
+
+        }
+
+        private Polyhedron UseCustomProjection(Matrix3D projMatrix)
+        {
+            Polyhedron newPoly = new Polyhedron(Faces.ConvertAll(face=>new Face(face.Edges.ConvertAll(edge=>new Edge(edge.First,edge.Second)).ToList())).ToList());
+            foreach (var face in newPoly.Faces)
             {
-                var matr = new Matrix3D(val.Key.X, val.Key.Y, val.Key.Z, 1 ,1,1,1,1,1,1,1,1,1,1,1,1);
-                var mult = Matrix3D.Multiply(matr, projMatrix);
-                var startPoint = new Point3D(mult.M11/mult.M14, mult.M12/mult.M14, 0);
-
-                foreach (var v in val.Value)
+                var edges = face.Edges;
+                foreach (var edge in edges)
                 {
-
-                    matr = new Matrix3D(v.X, v.Y, v.Z, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
-                    mult = Matrix3D.Multiply(matr, projMatrix);
-                    var endPoint = new Point3D(mult.M11 / mult.M14, mult.M12 / mult.M14, 0);
-                    result.AddEdge(startPoint, endPoint);
-
+                    edge.First = Transform(edge.First, projMatrix);
+                    edge.Second = Transform(edge.Second, projMatrix);
                 }
             }
-            return result;
+
+            return newPoly;
+        }
+        private Point3D Transform(Point3D point, Matrix3D projMatrix)
+        {
+            var matr = new Matrix3D(point.X, point.Y, point.Z, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+            var mult = Matrix3D.Multiply(matr, projMatrix);
+            var newPoint = new Point3D(mult.M11 / mult.M14, mult.M12 / mult.M14, 0);
+
+            return newPoint;
+        }
+
+        public void Transform(Matrix3D projMatrix)
+        {
+            foreach (var face in Faces)
+            {
+                var edges = face.Edges;
+                foreach (var edge in face.Edges)
+                {
+                    edge.First = MyTransform(edge.First, projMatrix);
+                    edge.Second = MyTransform(edge.Second, projMatrix);
+                }
+            }
+        }
+
+        private Point3D MyTransform(Point3D point, Matrix3D projMatrix)
+        {
+            var matr = new Vector3D(point.X, point.Y, point.Z);
+            var mult = Vector3D.Multiply(matr, projMatrix);
+            var newPoint = new Point3D(mult.X, mult.Y, mult.Z);
+
+            return newPoint;
+
+
         }
 
     }

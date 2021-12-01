@@ -19,12 +19,22 @@ namespace CGLab69.models
 
         public Octahedron() : base()
         {
-            AddEdges(a, new List<Point3D> { b, d, c, e });
-            AddEdges(b, new List<Point3D> { d });
-            AddEdges(c, new List<Point3D> { e });
-            AddEdges(d, new List<Point3D> { c });
-            AddEdges(e, new List<Point3D> { b });
-            AddEdges(f, new List<Point3D> { b, d, c, e });
+            var hex = new Hexahedron();
+            var faces = hex.Faces;
+            var a = faces[0].SideCenter();
+            var b = faces[1].SideCenter();
+            var c = faces[2].SideCenter();
+            var d = faces[3].SideCenter();
+            var e = faces[4].SideCenter();
+            var f = faces[5].SideCenter();
+            AddFace(new[] { a, f, b });
+            AddFace(new[] { b, c, f });
+            AddFace(new[] { c, d, f });
+            AddFace(new[] { d, a, f });
+            AddFace(new[] { a, e, b });
+            AddFace(new[] { b, e, c });
+            AddFace(new[] { c, e, d });
+            AddFace(new[] { d, e, a });
         }
 
         public Octahedron(List<Point3D> points) : base()
@@ -36,12 +46,12 @@ namespace CGLab69.models
             e = points[4];
             f = points[5];
 
-            AddEdges(a, new List<Point3D> { b, d, c, e });
-            AddEdges(b, new List<Point3D> { d });
-            AddEdges(c, new List<Point3D> { e });
-            AddEdges(d, new List<Point3D> { c });
-            AddEdges(e, new List<Point3D> { b });
-            AddEdges(f, new List<Point3D> { b, d, c, e });
+            //AddEdges(a, new List<Point3D> { b, d, c, e });
+            //AddEdges(b, new List<Point3D> { d });
+            //AddEdges(c, new List<Point3D> { e });
+            //AddEdges(d, new List<Point3D> { c });
+            //AddEdges(e, new List<Point3D> { b });
+            //AddEdges(f, new List<Point3D> { b, d, c, e });
         }
     }
 }
