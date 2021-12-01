@@ -42,7 +42,7 @@ namespace CGLab69.models
         /// <summary>
         /// Вершины
         /// </summary>
-        public virtual IEnumerable<Point3D> Vertices
+        public virtual IEnumerable<Tuple<Point3D, Vector3D>> Vertices
         {
             get
             {
@@ -50,7 +50,11 @@ namespace CGLab69.models
                 {
                     foreach (var e in f.Edges)
                     {
-                        yield return e.First;
+                        var adjacentFaces = Faces.Where(face => face.ContainsPoint(e.First)).ToList();
+                        var sumVect = new Vector3D(0, 0, 0);
+                        foreach (var face in adjacentFaces)
+                            sumVect += face.NormalVec();
+                        yield return new Tuple<Point3D, Vector3D>(e.First, sumVect / adjacentFaces.Count);
                     }
                 }
             }
@@ -80,9 +84,9 @@ namespace CGLab69.models
 
         public Point3D FigureCenter()
         {
-            var x = Vertices.Average(point => point.X);
-            var y = Vertices.Average(point => point.Y);
-            var z = Vertices.Average(point => point.Z);
+            var x = Vertices.Average(point => point.Item1.X);
+            var y = Vertices.Average(point => point.Item1.Y);
+            var z = Vertices.Average(point => point.Item1.Z);
             return new Point3D(x, y, z);
         }
 

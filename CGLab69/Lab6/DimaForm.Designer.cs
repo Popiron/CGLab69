@@ -114,6 +114,15 @@ namespace CGLab69.Lab6
             this.buttonUpload = new System.Windows.Forms.Button();
             this.label22 = new System.Windows.Forms.Label();
             this.mainPictureBox = new System.Windows.Forms.PictureBox();
+            this.guroYTextBox = new System.Windows.Forms.GroupBox();
+            this.pickColorButton = new System.Windows.Forms.Button();
+            this.colorPictureBox = new System.Windows.Forms.PictureBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.guroZTextBox = new System.Windows.Forms.TextBox();
+            this.guroYYTextBox = new System.Windows.Forms.TextBox();
+            this.guroXTextBox = new System.Windows.Forms.TextBox();
             this.figureBox.SuspendLayout();
             this.projectionBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -130,6 +139,8 @@ namespace CGLab69.Lab6
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).BeginInit();
+            this.guroYTextBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // figureBox
@@ -278,7 +289,7 @@ namespace CGLab69.Lab6
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(920, 138);
-            this.button2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button2.Margin = new System.Windows.Forms.Padding(5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(153, 46);
             this.button2.TabIndex = 12;
@@ -289,7 +300,7 @@ namespace CGLab69.Lab6
             // buttonClear
             // 
             this.buttonClear.Location = new System.Drawing.Point(920, 82);
-            this.buttonClear.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonClear.Margin = new System.Windows.Forms.Padding(5);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(153, 46);
             this.buttonClear.TabIndex = 11;
@@ -441,9 +452,9 @@ namespace CGLab69.Lab6
             this.groupBox2.Controls.Add(this.radioButtonY);
             this.groupBox2.Controls.Add(this.radioButtonX);
             this.groupBox2.Location = new System.Drawing.Point(1833, 917);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox2.Size = new System.Drawing.Size(278, 200);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
@@ -464,7 +475,7 @@ namespace CGLab69.Lab6
             // 
             this.radioButtonZ.AutoSize = true;
             this.radioButtonZ.Location = new System.Drawing.Point(10, 152);
-            this.radioButtonZ.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.radioButtonZ.Margin = new System.Windows.Forms.Padding(5);
             this.radioButtonZ.Name = "radioButtonZ";
             this.radioButtonZ.Size = new System.Drawing.Size(72, 36);
             this.radioButtonZ.TabIndex = 2;
@@ -476,7 +487,7 @@ namespace CGLab69.Lab6
             // 
             this.radioButtonY.AutoSize = true;
             this.radioButtonY.Location = new System.Drawing.Point(10, 96);
-            this.radioButtonY.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.radioButtonY.Margin = new System.Windows.Forms.Padding(5);
             this.radioButtonY.Name = "radioButtonY";
             this.radioButtonY.Size = new System.Drawing.Size(72, 36);
             this.radioButtonY.TabIndex = 1;
@@ -488,7 +499,7 @@ namespace CGLab69.Lab6
             // 
             this.radioButtonX.AutoSize = true;
             this.radioButtonX.Location = new System.Drawing.Point(10, 42);
-            this.radioButtonX.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.radioButtonX.Margin = new System.Windows.Forms.Padding(5);
             this.radioButtonX.Name = "radioButtonX";
             this.radioButtonX.Size = new System.Drawing.Size(73, 36);
             this.radioButtonX.TabIndex = 0;
@@ -502,9 +513,9 @@ namespace CGLab69.Lab6
             this.groupBox3.Controls.Add(this.textBoxScale);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(2121, 917);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox3.Size = new System.Drawing.Size(278, 200);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
@@ -524,7 +535,7 @@ namespace CGLab69.Lab6
             // textBoxScale
             // 
             this.textBoxScale.Location = new System.Drawing.Point(41, 85);
-            this.textBoxScale.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBoxScale.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxScale.Name = "textBoxScale";
             this.textBoxScale.Size = new System.Drawing.Size(162, 39);
             this.textBoxScale.TabIndex = 1;
@@ -558,9 +569,9 @@ namespace CGLab69.Lab6
             this.groupBox4.Controls.Add(this.textBoxRotate);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Location = new System.Drawing.Point(2408, 840);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox4.Size = new System.Drawing.Size(522, 277);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
@@ -619,7 +630,7 @@ namespace CGLab69.Lab6
             // textBoxZ2
             // 
             this.textBoxZ2.Location = new System.Drawing.Point(229, 152);
-            this.textBoxZ2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBoxZ2.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxZ2.Name = "textBoxZ2";
             this.textBoxZ2.Size = new System.Drawing.Size(59, 39);
             this.textBoxZ2.TabIndex = 17;
@@ -627,7 +638,7 @@ namespace CGLab69.Lab6
             // textBoxY2
             // 
             this.textBoxY2.Location = new System.Drawing.Point(158, 152);
-            this.textBoxY2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBoxY2.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxY2.Name = "textBoxY2";
             this.textBoxY2.Size = new System.Drawing.Size(59, 39);
             this.textBoxY2.TabIndex = 18;
@@ -635,7 +646,7 @@ namespace CGLab69.Lab6
             // textBoxX2
             // 
             this.textBoxX2.Location = new System.Drawing.Point(86, 152);
-            this.textBoxX2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBoxX2.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.Size = new System.Drawing.Size(59, 39);
             this.textBoxX2.TabIndex = 16;
@@ -652,7 +663,7 @@ namespace CGLab69.Lab6
             // textBoxZ1
             // 
             this.textBoxZ1.Location = new System.Drawing.Point(229, 106);
-            this.textBoxZ1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBoxZ1.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxZ1.Name = "textBoxZ1";
             this.textBoxZ1.Size = new System.Drawing.Size(59, 39);
             this.textBoxZ1.TabIndex = 14;
@@ -660,7 +671,7 @@ namespace CGLab69.Lab6
             // textBoxY1
             // 
             this.textBoxY1.Location = new System.Drawing.Point(158, 106);
-            this.textBoxY1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBoxY1.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxY1.Name = "textBoxY1";
             this.textBoxY1.Size = new System.Drawing.Size(59, 39);
             this.textBoxY1.TabIndex = 14;
@@ -668,7 +679,7 @@ namespace CGLab69.Lab6
             // textBoxX1
             // 
             this.textBoxX1.Location = new System.Drawing.Point(86, 106);
-            this.textBoxX1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBoxX1.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.Size = new System.Drawing.Size(59, 39);
             this.textBoxX1.TabIndex = 13;
@@ -676,7 +687,7 @@ namespace CGLab69.Lab6
             // buttonDraw
             // 
             this.buttonDraw.Location = new System.Drawing.Point(112, 219);
-            this.buttonDraw.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonDraw.Margin = new System.Windows.Forms.Padding(5);
             this.buttonDraw.Name = "buttonDraw";
             this.buttonDraw.Size = new System.Drawing.Size(153, 46);
             this.buttonDraw.TabIndex = 12;
@@ -698,7 +709,7 @@ namespace CGLab69.Lab6
             // textBoxRotate
             // 
             this.textBoxRotate.Location = new System.Drawing.Point(351, 118);
-            this.textBoxRotate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBoxRotate.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxRotate.Name = "textBoxRotate";
             this.textBoxRotate.Size = new System.Drawing.Size(132, 39);
             this.textBoxRotate.TabIndex = 1;
@@ -742,7 +753,7 @@ namespace CGLab69.Lab6
             // numericUpDown5
             // 
             this.numericUpDown5.Location = new System.Drawing.Point(364, 101);
-            this.numericUpDown5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.numericUpDown5.Margin = new System.Windows.Forms.Padding(5);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(96, 39);
             this.numericUpDown5.TabIndex = 8;
@@ -767,9 +778,9 @@ namespace CGLab69.Lab6
             this.groupBox5.Controls.Add(this.label14);
             this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Location = new System.Drawing.Point(2408, 555);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox5.Size = new System.Drawing.Size(522, 275);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
@@ -778,7 +789,7 @@ namespace CGLab69.Lab6
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(359, 48);
-            this.button3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button3.Margin = new System.Windows.Forms.Padding(5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(101, 46);
             this.button3.TabIndex = 29;
@@ -799,7 +810,7 @@ namespace CGLab69.Lab6
             // buttonCreate
             // 
             this.buttonCreate.Location = new System.Drawing.Point(83, 208);
-            this.buttonCreate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonCreate.Margin = new System.Windows.Forms.Padding(5);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(153, 46);
             this.buttonCreate.TabIndex = 28;
@@ -820,7 +831,7 @@ namespace CGLab69.Lab6
             // buttonRotation
             // 
             this.buttonRotation.Location = new System.Drawing.Point(276, 208);
-            this.buttonRotation.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonRotation.Margin = new System.Windows.Forms.Padding(5);
             this.buttonRotation.Name = "buttonRotation";
             this.buttonRotation.Size = new System.Drawing.Size(153, 46);
             this.buttonRotation.TabIndex = 27;
@@ -851,7 +862,7 @@ namespace CGLab69.Lab6
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(278, 48);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(5);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(59, 39);
             this.textBox2.TabIndex = 26;
@@ -864,7 +875,7 @@ namespace CGLab69.Lab6
             "Y",
             "Z"});
             this.comboBox1.Location = new System.Drawing.Point(364, 154);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(5);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(93, 40);
             this.comboBox1.TabIndex = 25;
@@ -872,7 +883,7 @@ namespace CGLab69.Lab6
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(167, 48);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(5);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(59, 39);
             this.textBox3.TabIndex = 27;
@@ -890,7 +901,7 @@ namespace CGLab69.Lab6
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(68, 48);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(5);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(59, 39);
             this.textBox4.TabIndex = 25;
@@ -918,9 +929,9 @@ namespace CGLab69.Lab6
             this.groupBox6.Controls.Add(this.buttonW);
             this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Location = new System.Drawing.Point(2408, 317);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox6.Size = new System.Drawing.Size(522, 243);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
@@ -949,7 +960,7 @@ namespace CGLab69.Lab6
             // buttonLeft
             // 
             this.buttonLeft.Location = new System.Drawing.Point(258, 154);
-            this.buttonLeft.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonLeft.Margin = new System.Windows.Forms.Padding(5);
             this.buttonLeft.Name = "buttonLeft";
             this.buttonLeft.Size = new System.Drawing.Size(73, 46);
             this.buttonLeft.TabIndex = 36;
@@ -960,7 +971,7 @@ namespace CGLab69.Lab6
             // buttonRight
             // 
             this.buttonRight.Location = new System.Drawing.Point(419, 154);
-            this.buttonRight.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonRight.Margin = new System.Windows.Forms.Padding(5);
             this.buttonRight.Name = "buttonRight";
             this.buttonRight.Size = new System.Drawing.Size(73, 46);
             this.buttonRight.TabIndex = 35;
@@ -971,7 +982,7 @@ namespace CGLab69.Lab6
             // buttonDown
             // 
             this.buttonDown.Location = new System.Drawing.Point(336, 154);
-            this.buttonDown.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonDown.Margin = new System.Windows.Forms.Padding(5);
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(73, 46);
             this.buttonDown.TabIndex = 34;
@@ -982,7 +993,7 @@ namespace CGLab69.Lab6
             // buttonUp
             // 
             this.buttonUp.Location = new System.Drawing.Point(336, 94);
-            this.buttonUp.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonUp.Margin = new System.Windows.Forms.Padding(5);
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.Size = new System.Drawing.Size(73, 46);
             this.buttonUp.TabIndex = 33;
@@ -993,7 +1004,7 @@ namespace CGLab69.Lab6
             // buttonA
             // 
             this.buttonA.Location = new System.Drawing.Point(2, 154);
-            this.buttonA.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonA.Margin = new System.Windows.Forms.Padding(5);
             this.buttonA.Name = "buttonA";
             this.buttonA.Size = new System.Drawing.Size(73, 46);
             this.buttonA.TabIndex = 32;
@@ -1004,7 +1015,7 @@ namespace CGLab69.Lab6
             // buttonD
             // 
             this.buttonD.Location = new System.Drawing.Point(162, 154);
-            this.buttonD.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonD.Margin = new System.Windows.Forms.Padding(5);
             this.buttonD.Name = "buttonD";
             this.buttonD.Size = new System.Drawing.Size(73, 46);
             this.buttonD.TabIndex = 31;
@@ -1015,7 +1026,7 @@ namespace CGLab69.Lab6
             // buttonS
             // 
             this.buttonS.Location = new System.Drawing.Point(80, 154);
-            this.buttonS.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonS.Margin = new System.Windows.Forms.Padding(5);
             this.buttonS.Name = "buttonS";
             this.buttonS.Size = new System.Drawing.Size(73, 46);
             this.buttonS.TabIndex = 30;
@@ -1026,7 +1037,7 @@ namespace CGLab69.Lab6
             // buttonW
             // 
             this.buttonW.Location = new System.Drawing.Point(80, 94);
-            this.buttonW.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonW.Margin = new System.Windows.Forms.Padding(5);
             this.buttonW.Name = "buttonW";
             this.buttonW.Size = new System.Drawing.Size(73, 46);
             this.buttonW.TabIndex = 29;
@@ -1050,9 +1061,9 @@ namespace CGLab69.Lab6
             this.groupBox7.Controls.Add(this.buttonUpload);
             this.groupBox7.Controls.Add(this.label22);
             this.groupBox7.Location = new System.Drawing.Point(2408, 64);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox7.Size = new System.Drawing.Size(522, 243);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
@@ -1061,7 +1072,7 @@ namespace CGLab69.Lab6
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(172, 42);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(335, 192);
             this.pictureBox1.TabIndex = 26;
@@ -1070,7 +1081,7 @@ namespace CGLab69.Lab6
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(10, 163);
-            this.button5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button5.Margin = new System.Windows.Forms.Padding(5);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(153, 46);
             this.button5.TabIndex = 25;
@@ -1080,7 +1091,7 @@ namespace CGLab69.Lab6
             // buttonUpload
             // 
             this.buttonUpload.Location = new System.Drawing.Point(10, 107);
-            this.buttonUpload.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonUpload.Margin = new System.Windows.Forms.Padding(5);
             this.buttonUpload.Name = "buttonUpload";
             this.buttonUpload.Size = new System.Drawing.Size(153, 46);
             this.buttonUpload.TabIndex = 24;
@@ -1100,17 +1111,110 @@ namespace CGLab69.Lab6
             // mainPictureBox
             // 
             this.mainPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.mainPictureBox.Location = new System.Drawing.Point(12, 12);
+            this.mainPictureBox.Location = new System.Drawing.Point(12, 171);
             this.mainPictureBox.Name = "mainPictureBox";
-            this.mainPictureBox.Size = new System.Drawing.Size(2387, 897);
+            this.mainPictureBox.Size = new System.Drawing.Size(2387, 738);
             this.mainPictureBox.TabIndex = 10;
             this.mainPictureBox.TabStop = false;
+            // 
+            // guroYTextBox
+            // 
+            this.guroYTextBox.Controls.Add(this.pickColorButton);
+            this.guroYTextBox.Controls.Add(this.colorPictureBox);
+            this.guroYTextBox.Controls.Add(this.label20);
+            this.guroYTextBox.Controls.Add(this.label21);
+            this.guroYTextBox.Controls.Add(this.label23);
+            this.guroYTextBox.Controls.Add(this.guroZTextBox);
+            this.guroYTextBox.Controls.Add(this.guroYYTextBox);
+            this.guroYTextBox.Controls.Add(this.guroXTextBox);
+            this.guroYTextBox.Location = new System.Drawing.Point(10, 13);
+            this.guroYTextBox.Name = "guroYTextBox";
+            this.guroYTextBox.Size = new System.Drawing.Size(400, 152);
+            this.guroYTextBox.TabIndex = 11;
+            this.guroYTextBox.TabStop = false;
+            this.guroYTextBox.Text = "Guro";
+            // 
+            // pickColorButton
+            // 
+            this.pickColorButton.Location = new System.Drawing.Point(141, 101);
+            this.pickColorButton.Name = "pickColorButton";
+            this.pickColorButton.Size = new System.Drawing.Size(150, 40);
+            this.pickColorButton.TabIndex = 38;
+            this.pickColorButton.Text = "Color";
+            this.pickColorButton.UseVisualStyleBackColor = true;
+            this.pickColorButton.Click += new System.EventHandler(this.pickColorButton_Click);
+            // 
+            // colorPictureBox
+            // 
+            this.colorPictureBox.Location = new System.Drawing.Point(95, 101);
+            this.colorPictureBox.Name = "colorPictureBox";
+            this.colorPictureBox.Size = new System.Drawing.Size(40, 40);
+            this.colorPictureBox.TabIndex = 37;
+            this.colorPictureBox.TabStop = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(233, 43);
+            this.label20.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(28, 32);
+            this.label20.TabIndex = 36;
+            this.label20.Text = "Z";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(118, 43);
+            this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(27, 32);
+            this.label21.TabIndex = 35;
+            this.label21.Text = "Y";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(15, 43);
+            this.label23.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(28, 32);
+            this.label23.TabIndex = 34;
+            this.label23.Text = "X";
+            // 
+            // guroZTextBox
+            // 
+            this.guroZTextBox.Location = new System.Drawing.Point(265, 40);
+            this.guroZTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.guroZTextBox.Name = "guroZTextBox";
+            this.guroZTextBox.Size = new System.Drawing.Size(59, 39);
+            this.guroZTextBox.TabIndex = 32;
+            this.guroZTextBox.TextChanged += new System.EventHandler(this.guroZTextBox_TextChanged);
+            // 
+            // guroYYTextBox
+            // 
+            this.guroYYTextBox.Location = new System.Drawing.Point(148, 40);
+            this.guroYYTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.guroYYTextBox.Name = "guroYYTextBox";
+            this.guroYYTextBox.Size = new System.Drawing.Size(59, 39);
+            this.guroYYTextBox.TabIndex = 33;
+            this.guroYYTextBox.TextChanged += new System.EventHandler(this.guroYYTextBox_TextChanged);
+            // 
+            // guroXTextBox
+            // 
+            this.guroXTextBox.Location = new System.Drawing.Point(50, 40);
+            this.guroXTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.guroXTextBox.Name = "guroXTextBox";
+            this.guroXTextBox.Size = new System.Drawing.Size(59, 39);
+            this.guroXTextBox.TabIndex = 31;
+            this.guroXTextBox.TextChanged += new System.EventHandler(this.guroXTextBox_TextChanged);
             // 
             // DimaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2884, 1120);
+            this.Controls.Add(this.guroYTextBox);
             this.Controls.Add(this.mainPictureBox);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
@@ -1155,6 +1259,9 @@ namespace CGLab69.Lab6
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainPictureBox)).EndInit();
+            this.guroYTextBox.ResumeLayout(false);
+            this.guroYTextBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.colorPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1246,5 +1353,14 @@ namespace CGLab69.Lab6
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox mainPictureBox;
+        private System.Windows.Forms.GroupBox guroYTextBox;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox guroZTextBox;
+        private System.Windows.Forms.TextBox guroYYTextBox;
+        private System.Windows.Forms.TextBox guroXTextBox;
+        private System.Windows.Forms.Button pickColorButton;
+        private System.Windows.Forms.PictureBox colorPictureBox;
     }
 }

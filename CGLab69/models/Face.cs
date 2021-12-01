@@ -37,6 +37,16 @@ public class Face
             return;
         Edges.Add(edge);
     }
+
+    public bool ContainsPoint(Point3D point)
+    {
+        foreach (var e in Edges)
+        {
+            if (e.First == point || e.Second == point)
+                return true;
+        }
+        return false;
+    }
     /*
     public List<double> SideEquation()
     {

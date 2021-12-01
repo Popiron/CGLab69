@@ -21,5 +21,11 @@ namespace CGLab69.models
             First = first;
             Second = second;
         }
+
+        public IEnumerable<Point3D> Points()
+        {
+            yield return First;
+            yield return Second;
+        }
     }
 }

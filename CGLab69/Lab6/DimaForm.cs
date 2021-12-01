@@ -24,6 +24,8 @@ namespace CGLab69.Lab6
         int midX;
         int midY;
         Pen globalPen = Pens.Black;
+        Point3D lightPosition = new Point3D(0,0,0);
+        Color polyhedronColor = Color.Aqua;
 
         public DimaForm()
         {
@@ -40,6 +42,11 @@ namespace CGLab69.Lab6
             midY = Size.Height / 2 - 300;
             tetraRadioButton.Checked = true;
             perspectiveRadioButton.Checked = true;
+            colorPictureBox.BackColor = polyhedronColor;
+            guroXTextBox.Text = lightPosition.X.ToString();
+            guroYYTextBox.Text = lightPosition.Y.ToString();
+            guroZTextBox.Text = lightPosition.Z.ToString();
+
             loadFigure();
         }
 
@@ -69,27 +76,16 @@ namespace CGLab69.Lab6
                     break;
             }
             ;
-            var polys = new List<Polyhedron>();
-            polys.Add(polyhedron);
-            polys.Add(new Octahedron());
-            mainPictureBox.Image = ZBuffer.zBuffer(mainPictureBox.Width, mainPictureBox.Height, polys);
-            //foreach (var r in polyhedron.UseProjection(currentProjection).Edges)
-            //{
-            //    g.DrawLine(globalPen, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
-            //}
+
+            var bmp = Lighting.lighting(mainPictureBox.Width, mainPictureBox.Height, polyhedron, lightPosition, polyhedronColor);
+            mainPictureBox.Image = bmp;
         }
 
         private void refreshFigure()
         {
             ClearPicture();
-            var polys = new List<Polyhedron>();
-            polys.Add(polyhedron);
-            polys.Add(new Octahedron());
-            mainPictureBox.Image = ZBuffer.zBuffer(mainPictureBox.Width, mainPictureBox.Height, polys);
-            //foreach (var r in polyhedron.UseProjection(currentProjection).Edges)
-            //{
-            //    g.DrawLine(globalPen, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
-            //}
+            var bmp = Lighting.lighting(mainPictureBox.Width, mainPictureBox.Height, polyhedron, lightPosition, polyhedronColor);
+            mainPictureBox.Image = bmp;
         }
 
         private void eraseLine()
@@ -833,23 +829,23 @@ namespace CGLab69.Lab6
             refreshFigure(); */
         }
 
-        private void Transform(Polyhedron t, double[,] m)
-        {
-            var vert = t.Vertices.ToList();
-            for (int i = 0; i < vert.Count; i++)
-            {
-                double[,] vector = {
-                    { vert[i].X },
-                    { vert[i].Y },
-                    { vert[i].Z },
-                    { 1 }
-                };
-                var res = MatrixHelpers.multiply(m, vector);
-                Point3D newV = new Point3D(res[0, 0], res[1, 0], res[2, 0]);
-                vert[i] = newV;
-            }
-            
-        }
+        //private void Transform(Polyhedron t, double[,] m)
+        //{
+        //    var vert = t.Vertices.ToList();
+        //    for (int i = 0; i < vert.Count; i++)
+        //    {
+        //        double[,] vector = {
+        //            { vert[i].Item1.X },
+        //            { vert[i].Item1.Y },
+        //            { vert[i].Item1.Z },
+        //            { 1 }
+        //        };
+        //        var res = MatrixHelpers.multiply(m, vector);
+        //        Point3D newV = new Point3D(res[0, 0], res[1, 0], res[2, 0]);
+        //        vert[i] = newV;
+        //    }
+        //    
+        //}
 
 
 
@@ -934,6 +930,54 @@ namespace CGLab69.Lab6
             catch (Exception)
             {
                 MessageBox.Show("Error");
+            }
+        }
+
+        private void pickColorButton_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.ShowDialog();
+            colorPictureBox.BackColor = colorDialog.Color;
+            polyhedronColor = colorDialog.Color;
+            refreshFigure();
+        }
+
+        private void guroXTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                lightPosition.X = int.Parse(guroXTextBox.Text);
+                refreshFigure();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void guroYYTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                lightPosition.Y = int.Parse(guroYYTextBox.Text);
+                refreshFigure();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void guroZTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                lightPosition.Z = int.Parse(guroZTextBox.Text);
+                refreshFigure();
+            }
+            catch (Exception)
+            {
+
             }
         }
     }
