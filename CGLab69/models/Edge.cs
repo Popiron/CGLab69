@@ -15,11 +15,21 @@ namespace CGLab69.models
     {
         public Point3D First { get; set; }
         public Point3D Second { get; set; }
-        
+
+        public List<Point3D> points;
+
         public Edge(Point3D first, Point3D second)
         {
             First = first;
             Second = second;
+        }
+        public Edge(List<Point3D> p)
+        {
+            this.points = p;
+        }
+        public Edge()
+        {
+            this.points = new List<Point3D> { };
         }
     }
 }

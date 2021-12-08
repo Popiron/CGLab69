@@ -69,13 +69,13 @@ namespace CGLab69.Lab6
             this.textBoxY2 = new System.Windows.Forms.TextBox();
             this.textBoxX2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxZ1 = new System.Windows.Forms.TextBox();
             this.textBoxY1 = new System.Windows.Forms.TextBox();
-            this.textBoxX1 = new System.Windows.Forms.TextBox();
             this.buttonDraw = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBoxRotate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBoxZ1 = new System.Windows.Forms.TextBox();
+            this.textBoxX1 = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -88,6 +88,15 @@ namespace CGLab69.Lab6
             this.textBoxRangeX1 = new System.Windows.Forms.TextBox();
             this.textBoxRangeX0 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.button_ShowGraph = new System.Windows.Forms.Button();
+            this.textBoxZ0 = new System.Windows.Forms.TextBox();
+            this.textBoxX0 = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.numericUpDownZ = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownY = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownX = new System.Windows.Forms.NumericUpDown();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.figureBox.SuspendLayout();
             this.projectionBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -99,6 +108,11 @@ namespace CGLab69.Lab6
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // figureBox
@@ -114,6 +128,7 @@ namespace CGLab69.Lab6
             this.figureBox.TabIndex = 0;
             this.figureBox.TabStop = false;
             this.figureBox.Text = "Figure";
+            this.figureBox.Visible = false;
             // 
             // octaRadioButton
             // 
@@ -168,6 +183,7 @@ namespace CGLab69.Lab6
             this.projectionBox.TabIndex = 1;
             this.projectionBox.TabStop = false;
             this.projectionBox.Text = "Projection";
+            this.projectionBox.Visible = false;
             // 
             // dimetricRadioButton
             // 
@@ -237,10 +253,11 @@ namespace CGLab69.Lab6
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.groupBox1.Size = new System.Drawing.Size(644, 94);
+            this.groupBox1.Size = new System.Drawing.Size(434, 94);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Transformations";
+            this.groupBox1.Visible = false;
             // 
             // textBox1
             // 
@@ -375,7 +392,7 @@ namespace CGLab69.Lab6
             this.groupBox2.Controls.Add(this.radioButtonZ);
             this.groupBox2.Controls.Add(this.radioButtonY);
             this.groupBox2.Controls.Add(this.radioButtonX);
-            this.groupBox2.Location = new System.Drawing.Point(987, 430);
+            this.groupBox2.Location = new System.Drawing.Point(778, 430);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -383,6 +400,7 @@ namespace CGLab69.Lab6
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reflection ";
+            this.groupBox2.Visible = false;
             // 
             // buttonRef
             // 
@@ -435,7 +453,7 @@ namespace CGLab69.Lab6
             this.groupBox3.Controls.Add(this.buttonScaleC);
             this.groupBox3.Controls.Add(this.textBoxScale);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(1142, 430);
+            this.groupBox3.Location = new System.Drawing.Point(934, 429);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -443,6 +461,7 @@ namespace CGLab69.Lab6
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Scaling(Center)";
+            this.groupBox3.Visible = false;
             // 
             // buttonScaleC
             // 
@@ -482,14 +501,12 @@ namespace CGLab69.Lab6
             this.groupBox4.Controls.Add(this.textBoxY2);
             this.groupBox4.Controls.Add(this.textBoxX2);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.textBoxZ1);
             this.groupBox4.Controls.Add(this.textBoxY1);
-            this.groupBox4.Controls.Add(this.textBoxX1);
             this.groupBox4.Controls.Add(this.buttonDraw);
             this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.textBoxRotate);
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Location = new System.Drawing.Point(1297, 394);
+            this.groupBox4.Location = new System.Drawing.Point(5, 11);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -497,6 +514,7 @@ namespace CGLab69.Lab6
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Rotate(Line)";
+            this.groupBox4.Visible = false;
             // 
             // label8
             // 
@@ -575,14 +593,6 @@ namespace CGLab69.Lab6
             this.label3.Size = new System.Drawing.Size(0, 15);
             this.label3.TabIndex = 15;
             // 
-            // textBoxZ1
-            // 
-            this.textBoxZ1.Location = new System.Drawing.Point(123, 50);
-            this.textBoxZ1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxZ1.Name = "textBoxZ1";
-            this.textBoxZ1.Size = new System.Drawing.Size(34, 23);
-            this.textBoxZ1.TabIndex = 14;
-            // 
             // textBoxY1
             // 
             this.textBoxY1.Location = new System.Drawing.Point(85, 50);
@@ -590,14 +600,6 @@ namespace CGLab69.Lab6
             this.textBoxY1.Name = "textBoxY1";
             this.textBoxY1.Size = new System.Drawing.Size(34, 23);
             this.textBoxY1.TabIndex = 14;
-            // 
-            // textBoxX1
-            // 
-            this.textBoxX1.Location = new System.Drawing.Point(46, 50);
-            this.textBoxX1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(34, 23);
-            this.textBoxX1.TabIndex = 13;
             // 
             // buttonDraw
             // 
@@ -636,6 +638,24 @@ namespace CGLab69.Lab6
             this.label2.Size = new System.Drawing.Size(0, 15);
             this.label2.TabIndex = 0;
             // 
+            // textBoxZ1
+            // 
+            this.textBoxZ1.Location = new System.Drawing.Point(4, 128);
+            this.textBoxZ1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxZ1.Name = "textBoxZ1";
+            this.textBoxZ1.Size = new System.Drawing.Size(100, 23);
+            this.textBoxZ1.TabIndex = 14;
+            this.textBoxZ1.Text = "350";
+            // 
+            // textBoxX1
+            // 
+            this.textBoxX1.Location = new System.Drawing.Point(4, 155);
+            this.textBoxX1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.Size = new System.Drawing.Size(100, 23);
+            this.textBoxX1.TabIndex = 13;
+            this.textBoxX1.Text = "350";
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.button2);
@@ -649,12 +669,13 @@ namespace CGLab69.Lab6
             this.groupBox5.Controls.Add(this.textBoxRangeX1);
             this.groupBox5.Controls.Add(this.textBoxRangeX0);
             this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Location = new System.Drawing.Point(1297, 257);
+            this.groupBox5.Location = new System.Drawing.Point(5, 146);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(281, 131);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Function";
+            this.groupBox5.Visible = false;
             // 
             // button2
             // 
@@ -754,11 +775,133 @@ namespace CGLab69.Lab6
             this.label9.TabIndex = 0;
             this.label9.Text = "[x0, x1] = ";
             // 
+            // button_ShowGraph
+            // 
+            this.button_ShowGraph.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button_ShowGraph.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button_ShowGraph.Location = new System.Drawing.Point(4, 19);
+            this.button_ShowGraph.Margin = new System.Windows.Forms.Padding(1);
+            this.button_ShowGraph.Name = "button_ShowGraph";
+            this.button_ShowGraph.Size = new System.Drawing.Size(120, 47);
+            this.button_ShowGraph.TabIndex = 8;
+            this.button_ShowGraph.Text = "Show Graph";
+            this.button_ShowGraph.UseVisualStyleBackColor = false;
+            this.button_ShowGraph.Click += new System.EventHandler(this.button_ShowGraph_Click);
+            // 
+            // textBoxZ0
+            // 
+            this.textBoxZ0.Location = new System.Drawing.Point(4, 71);
+            this.textBoxZ0.Name = "textBoxZ0";
+            this.textBoxZ0.Size = new System.Drawing.Size(100, 23);
+            this.textBoxZ0.TabIndex = 9;
+            this.textBoxZ0.Text = "0";
+            // 
+            // textBoxX0
+            // 
+            this.textBoxX0.Location = new System.Drawing.Point(4, 100);
+            this.textBoxX0.Name = "textBoxX0";
+            this.textBoxX0.Size = new System.Drawing.Size(100, 23);
+            this.textBoxX0.TabIndex = 10;
+            this.textBoxX0.Text = "0";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.button3);
+            this.groupBox6.Controls.Add(this.numericUpDownZ);
+            this.groupBox6.Controls.Add(this.numericUpDownY);
+            this.groupBox6.Controls.Add(this.numericUpDownX);
+            this.groupBox6.Location = new System.Drawing.Point(5, 281);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.groupBox6.Size = new System.Drawing.Size(184, 108);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "View Angle";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(104, 20);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Shift";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // numericUpDownZ
+            // 
+            this.numericUpDownZ.Location = new System.Drawing.Point(4, 78);
+            this.numericUpDownZ.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownZ.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownZ.Name = "numericUpDownZ";
+            this.numericUpDownZ.Size = new System.Drawing.Size(56, 23);
+            this.numericUpDownZ.TabIndex = 3;
+            // 
+            // numericUpDownY
+            // 
+            this.numericUpDownY.Location = new System.Drawing.Point(4, 49);
+            this.numericUpDownY.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownY.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownY.Name = "numericUpDownY";
+            this.numericUpDownY.Size = new System.Drawing.Size(56, 23);
+            this.numericUpDownY.TabIndex = 2;
+            // 
+            // numericUpDownX
+            // 
+            this.numericUpDownX.Location = new System.Drawing.Point(4, 20);
+            this.numericUpDownX.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownX.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownX.Name = "numericUpDownX";
+            this.numericUpDownX.Size = new System.Drawing.Size(56, 23);
+            this.numericUpDownX.TabIndex = 1;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.button_ShowGraph);
+            this.groupBox7.Controls.Add(this.textBoxZ0);
+            this.groupBox7.Controls.Add(this.textBoxX0);
+            this.groupBox7.Controls.Add(this.textBoxZ1);
+            this.groupBox7.Controls.Add(this.textBoxX1);
+            this.groupBox7.Location = new System.Drawing.Point(941, 11);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(143, 200);
+            this.groupBox7.TabIndex = 15;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Graph";
+            // 
             // DimaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1581, 525);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1088, 525);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -790,6 +933,12 @@ namespace CGLab69.Lab6
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -855,5 +1004,14 @@ namespace CGLab69.Lab6
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_ShowGraph;
+        private System.Windows.Forms.TextBox textBoxZ0;
+        private System.Windows.Forms.TextBox textBoxX0;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.NumericUpDown numericUpDownZ;
+        private System.Windows.Forms.NumericUpDown numericUpDownY;
+        private System.Windows.Forms.NumericUpDown numericUpDownX;
+        private System.Windows.Forms.GroupBox groupBox7;
     }
 }

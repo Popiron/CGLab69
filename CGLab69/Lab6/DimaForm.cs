@@ -17,17 +17,20 @@ namespace CGLab69.Lab6
     {
         Graphics g;
         Polyhedron polyhedron;
-        Polyhedron Graph;
         Figures currentFigure;
         Projections currentProjection;
         int midX;
         int midY;
         Pen globalPen = Pens.Black;
+        
+        Point3D center;
+        Point3D shift = new Point3D(0,0,0);
 
         public DimaForm()
         {
             InitializeComponent();
             g = CreateGraphics();
+            center = new Point3D(this.Width / 4, this.Height / 2, 0);
         }
 
 
@@ -64,15 +67,7 @@ namespace CGLab69.Lab6
             }
         }
 
-        private void refreshFigure()
-        {
-            g.Clear(Color.White);
-
-            foreach (var r in polyhedron.useProjection(currentProjection).Edges)
-            {
-                g.DrawLine(globalPen, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
-            }
-        }
+        
 
         private void tetraRadioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -408,7 +403,7 @@ namespace CGLab69.Lab6
             {
                 g.DrawLine(Pens.White, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
             }
-            Graph = new Polyhedron();
+            polyhedron = new Polyhedron();
         }
 
         private void buttonGraph_Click(object sender, EventArgs e)//test function z = x + y
@@ -451,6 +446,173 @@ namespace CGLab69.Lab6
         private void button2_Click(object sender, EventArgs e){
             ClearGraph();
             globalPen = Pens.Black;
+        }
+
+        private void refreshFigure()
+        {
+            g.Clear(Color.White);
+
+            foreach (var r in polyhedron.useProjection(currentProjection).Edges)
+            {
+                g.DrawLine(globalPen, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
+            }
+        }
+
+        Point[] Position2d(Edge e)
+        {
+            List<Point> p2D = new List<Point> { };
+            foreach (var p3 in e.points)
+            {
+                p2D.Add(new Point((int)p3.X + (int)center.X, (int)p3.Y + (int)center.Y));
+            }
+            return p2D.ToArray();
+        }
+        Point Position2d(Point3D p)
+        {
+            return new Point((int)p.X + (int)center.X, (int)p.Y + (int)center.Y);
+        }
+
+        public void DrawFunc()
+        {
+            g.Clear(Color.White);
+            Dictionary<double, double> UpBound = new Dictionary<double, double>();
+            Dictionary<double, double> DownBound = new Dictionary<double, double>();
+            polyhedron.Edges.Sort((Edge first, Edge second) =>
+            {
+                return first.points[0].Z > second.points[0].Z ? 1 : -1;
+            });
+
+            foreach (var point in polyhedron.Edges[0].points)
+            {
+                UpBound[Math.Round(point.X, 0)] = point.Y;
+                DownBound[Math.Round(point.X, 0)] = point.Y;
+            }
+
+            foreach (var edge in polyhedron.Edges)
+            {
+                bool is_last_visible = true;
+                Point3D last_point = edge.points[0];
+                foreach (var point in edge.points)
+                {
+                    double x = Math.Round(point.X, 0);
+                    if (!UpBound.ContainsKey(x))
+                    {
+                        UpBound[x] = point.Y;
+                        DownBound[x] = point.Y;
+                        if (is_last_visible)
+                            g.DrawLine(Pens.Blue, Position2d(last_point), Position2d(point));
+                        last_point = point;
+                        is_last_visible = true;
+                    }
+                    else
+                    if (point.Y >= UpBound[x])
+                    {
+                        if (is_last_visible)
+                            g.DrawLine(Pens.Blue, Position2d(last_point), Position2d(point));
+                        UpBound[x] = point.Y;
+                        last_point = point;
+                        is_last_visible = true;
+                    }
+                    else
+                    if (point.Y <= DownBound[x])
+                    {
+                        if (is_last_visible)
+                            g.DrawLine(Pens.Blue, Position2d(last_point), Position2d(point));
+                        DownBound[x] = point.Y;
+                        last_point = point;
+                        is_last_visible = true;
+                    }
+                    else
+                        is_last_visible = false;
+                }
+            }
+        }
+
+        private void button_ShowGraph_Click(object sender, EventArgs e)
+        {
+            polyhedron = new Polyhedron();
+            currentFigure = Figures.Graph;
+            int scale = 60;
+            //y = (1 / 5)sin x cos z – (3 / 2) cos(7α / 4) e^(-α), где α = (x - p)^2 + (z - p)^2
+            Func<double, double, double> funcc = (double x, double z) =>
+            {
+                double alpha = Math.Pow((x / scale - Math.PI), 2) + Math.Pow((z / scale - Math.PI), 2);
+                return scale * ((1 / 5.0) * Math.Sin(x / scale) * Math.Cos(z / scale) - (3 / 2.0) * Math.Cos(7 * alpha / 4) * Math.Pow(Math.E, -alpha));
+            };
+
+            if (comboBox1.Text == "sin(x)*cos(y)")
+                funcc = (double x, double y) => { return scale * (Math.Sin(x / scale) * Math.Cos(y / scale)); };
+            if (comboBox1.Text == "sin(x)^2*cos(y)^2")
+                funcc = (double x, double y) => { return scale * (Math.Sin(x / scale) * Math.Sin(x / scale) * Math.Cos(y / scale) * Math.Cos(y / scale)); };
+            if (comboBox1.Text == "sin(x)^2+cos(y)^2")
+                funcc = (double x, double y) => { return scale * (Math.Sin(x / scale) * Math.Sin(x / scale) + Math.Cos(y / scale) * Math.Cos(y / scale)); };
+
+            int index = 0;
+
+            for (int z = int.Parse(textBoxZ0.Text); z <= int.Parse(textBoxZ1.Text); z += 5)
+            {
+                polyhedron.Edges.Add(new Edge(new List<Point3D>()));
+                for (int x = int.Parse(textBoxX0.Text); x <= int.Parse(textBoxX1.Text); x++)
+                {
+                    polyhedron.Edges[index].points.Add(new Point3D(x, funcc(x, z), z));
+                }
+                index++;
+            }
+            DrawFunc();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            g.Clear(Color.White);
+            List<Edge> newEdges = new List<Edge>();
+            foreach (var edge in polyhedron.Edges)
+            {
+                Edge newPoints = new Edge();
+                foreach (var point in edge.points)
+                {
+                    double[,] m = new double[1, 4];
+                    m[0, 0] = point.X - shift.X;
+                    m[0, 1] = point.Y - shift.Y;
+                    m[0, 2] = point.Z - shift.Z;
+                    m[0, 3] = 1;
+
+                    var angle = double.Parse(numericUpDownX.Text) * Math.PI / 180;
+                    double[,] matrx = new double[4, 4]
+                    {
+                    { Math.Cos(angle), 0, Math.Sin(angle), 0},
+                    { 0, 1, 0, 0 },
+                    {-Math.Sin(angle), 0, Math.Cos(angle), 0 },
+                    { 0, 0, 0, 1 }
+                    };
+
+                    angle = double.Parse(numericUpDownY.Text) * Math.PI / 180;
+                    double[,] matry = new double[4, 4]
+                    {  
+                    { 1, 0, 0, 0 },
+                    { 0, Math.Cos(angle), -Math.Sin(angle), 0},
+                    {0, Math.Sin(angle), Math.Cos(angle), 0 },
+                    { 0, 0, 0, 1 } 
+                    };
+
+                    angle = double.Parse(numericUpDownZ.Text) * Math.PI / 180;
+                    double[,] matrz = new double[4, 4]
+                    {
+                    { Math.Cos(angle), -Math.Sin(angle), 0, 0},
+                    { Math.Sin(angle), Math.Cos(angle), 0, 0 },
+                    { 0, 0, 1, 0 },
+                    { 0, 0, 0, 1 }
+                    };
+
+                    var final_matrix = MatrixHelpers.multiply(m, matrx);
+                    final_matrix = MatrixHelpers.multiply(final_matrix, matry);
+                    final_matrix = MatrixHelpers.multiply(final_matrix, matrz);
+
+                    newPoints.points.Add(new Point3D(final_matrix[0, 0] + shift.X, final_matrix[0, 1] + shift.Y, final_matrix[0, 2] + shift.Z));
+                }
+                newEdges.Add(newPoints);
+            }
+            polyhedron.Edges = newEdges;
+            DrawFunc();
         }
     }
 }

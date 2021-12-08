@@ -19,7 +19,7 @@ namespace CGLab69.models
         /// <summary>
         /// Прямые (ребра)
         /// </summary>
-        public List<Edge> Edges { get; }
+        public List<Edge> Edges { get; set; }
         /// <summary>
         /// Вершины
         /// </summary>
