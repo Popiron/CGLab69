@@ -908,9 +908,49 @@ namespace CGLab69.Lab6
             polyhedron.Transform(tM);
             refreshFigure();
         }
+        
         private void Texturing(Polyhedron p)
         {
-            Bitmap image = new Bitmap(pictureBox1.Size.Width - 1, pictureBox1.Size.Height - 1);
+            float xMax = -1;
+            float yMax = -1;
+            float yMin = int.MaxValue;
+            float xMin = int.MaxValue;
+            Bitmap mp = new Bitmap(mainPictureBox.Image);
+            Bitmap image = new Bitmap(pictureBox1.Image);
+            foreach (var x in p.Faces)
+            {
+                for (int i = 0; i < x.Edges.Count; i++)
+                {
+                   if( xMax < Math.Max(x.Edges[i].First.X, x.Edges[i].Second.X))
+                     {
+                        xMax = (float)Math.Max(x.Edges[i].First.X, x.Edges[i].Second.X);
+                    }
+                    if (yMax < Math.Max(x.Edges[i].First.Y, x.Edges[i].Second.Y))
+                    {
+                        yMax = (float)Math.Max(x.Edges[i].First.Y, x.Edges[i].Second.Y);
+                    }
+                    if (xMin > Math.Min(x.Edges[i].First.X, x.Edges[i].Second.X))
+                    {
+                        xMin = (float)Math.Min(x.Edges[i].First.X, x.Edges[i].Second.X);
+                    }
+                    if (yMin > Math.Min(x.Edges[i].First.Y, x.Edges[i].Second.Y))
+                    {
+                        yMin = (float)Math.Min(x.Edges[i].First.Y, x.Edges[i].Second.Y);
+                    }
+                }
+                for (var i = xMin; i<xMax; i++)
+                { 
+                    for (var j = yMin; j < yMin; j++)
+                    {
+                        var u = (i - xMin) / (xMax - xMin);
+                        var v = (j - yMin) / (yMax - yMin);
+                        Color c = image.GetPixel((int)(u), (int)(v));
+                        mp.SetPixel((int)i, (int)j, c);
+                    }
+                    
+                }
+            }
+            mainPictureBox.Image = mp;
         }
 
         private void buttonUpload_Click(object sender, EventArgs e)
@@ -979,6 +1019,12 @@ namespace CGLab69.Lab6
             {
 
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Texturing(polyhedron);
+            refreshFigure();
         }
     }
 }
