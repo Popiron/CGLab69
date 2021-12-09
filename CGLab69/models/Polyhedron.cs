@@ -124,5 +124,14 @@ namespace CGLab69.models
             return result;
         }
 
+
+        public Vector3D NormalVec()
+        {
+            var p1 = Edges[0].First;
+            var p2 = Edges[0].Second;
+            var p3 = Edges[1].Second;
+
+            return Vector3D.CrossProduct(p2 - p1, p3 - p2);
+        }
     }
 }

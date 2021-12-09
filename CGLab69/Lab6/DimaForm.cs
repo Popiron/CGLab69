@@ -132,16 +132,24 @@ namespace CGLab69.Lab6
         private void refreshFigure()
         {
             g.Clear(Color.White);
-
+            richTextBox1.Text = "";
             foreach (var face in polyhedron.Faces)
             {
-                if (Center(face).Z > Center(polyhedron).Z)
-                {
-                    continue;
-                }
+                
+
+                Vector3D rvec = face.NormalVec();
+
+                richTextBox1.Text += Math.Truncate(rvec.X).ToString() + ";" + Math.Truncate(rvec.Y).ToString() + "; " + Math.Truncate(rvec.Z).ToString() + "\n";
+                
+                
+                //if (rvec.Z > -53790)
+                //{
+                //    continue;
+                //}
+
                 foreach (var edge in face.useProjection(currentProjection).Edges)
                 {
-                    g.DrawLine(globalPen, (int)(edge.First.X + midX), (int)(edge.First.Y + midY), (int)(edge.Second.X + midX), (int)(edge.Second.Y + midY));
+                    g.DrawLine(Pens.Black, (int)(edge.First.X + midX), (int)(edge.First.Y + midY), (int)(edge.Second.X + midX), (int)(edge.Second.Y + midY));
                 }
             }
         }

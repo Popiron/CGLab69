@@ -90,6 +90,7 @@ namespace CGLab69.Lab6
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.buttonDemoOct = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.figureBox.SuspendLayout();
             this.projectionBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -791,11 +792,20 @@ namespace CGLab69.Lab6
             this.buttonDemoOct.UseVisualStyleBackColor = true;
             this.buttonDemoOct.Click += new System.EventHandler(this.buttonDemoOct_Click_1);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(13, 43);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(232, 257);
+            this.richTextBox1.TabIndex = 9;
+            this.richTextBox1.Text = "";
+            // 
             // DimaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1580, 525);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.buttonDemoOct);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -897,5 +907,6 @@ namespace CGLab69.Lab6
         private System.Windows.Forms.RadioButton radioButtonDP;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonDemoOct;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
