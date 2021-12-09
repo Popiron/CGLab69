@@ -92,11 +92,19 @@ namespace CGLab69.Lab6
             this.textBoxZ0 = new System.Windows.Forms.TextBox();
             this.textBoxX0 = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.numericUpDownStep = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.numericUpDownZ = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownY = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownX = new System.Windows.Forms.NumericUpDown();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.figureBox.SuspendLayout();
             this.projectionBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -109,6 +117,7 @@ namespace CGLab69.Lab6
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStep)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).BeginInit();
@@ -640,21 +649,21 @@ namespace CGLab69.Lab6
             // 
             // textBoxZ1
             // 
-            this.textBoxZ1.Location = new System.Drawing.Point(4, 128);
+            this.textBoxZ1.Location = new System.Drawing.Point(133, 22);
             this.textBoxZ1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxZ1.Name = "textBoxZ1";
             this.textBoxZ1.Size = new System.Drawing.Size(100, 23);
             this.textBoxZ1.TabIndex = 14;
-            this.textBoxZ1.Text = "350";
+            this.textBoxZ1.Text = "600";
             // 
             // textBoxX1
             // 
-            this.textBoxX1.Location = new System.Drawing.Point(4, 155);
+            this.textBoxX1.Location = new System.Drawing.Point(133, 51);
             this.textBoxX1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.Size = new System.Drawing.Size(100, 23);
             this.textBoxX1.TabIndex = 13;
-            this.textBoxX1.Text = "350";
+            this.textBoxX1.Text = "600";
             // 
             // groupBox5
             // 
@@ -779,7 +788,7 @@ namespace CGLab69.Lab6
             // 
             this.button_ShowGraph.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button_ShowGraph.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button_ShowGraph.Location = new System.Drawing.Point(4, 19);
+            this.button_ShowGraph.Location = new System.Drawing.Point(111, 87);
             this.button_ShowGraph.Margin = new System.Windows.Forms.Padding(1);
             this.button_ShowGraph.Name = "button_ShowGraph";
             this.button_ShowGraph.Size = new System.Drawing.Size(120, 47);
@@ -790,7 +799,7 @@ namespace CGLab69.Lab6
             // 
             // textBoxZ0
             // 
-            this.textBoxZ0.Location = new System.Drawing.Point(4, 71);
+            this.textBoxZ0.Location = new System.Drawing.Point(27, 22);
             this.textBoxZ0.Name = "textBoxZ0";
             this.textBoxZ0.Size = new System.Drawing.Size(100, 23);
             this.textBoxZ0.TabIndex = 9;
@@ -798,7 +807,7 @@ namespace CGLab69.Lab6
             // 
             // textBoxX0
             // 
-            this.textBoxX0.Location = new System.Drawing.Point(4, 100);
+            this.textBoxX0.Location = new System.Drawing.Point(27, 51);
             this.textBoxX0.Name = "textBoxX0";
             this.textBoxX0.Size = new System.Drawing.Size(100, 23);
             this.textBoxX0.TabIndex = 10;
@@ -806,27 +815,93 @@ namespace CGLab69.Lab6
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.label17);
+            this.groupBox6.Controls.Add(this.numericUpDownStep);
+            this.groupBox6.Controls.Add(this.label14);
+            this.groupBox6.Controls.Add(this.label13);
+            this.groupBox6.Controls.Add(this.label12);
             this.groupBox6.Controls.Add(this.button3);
             this.groupBox6.Controls.Add(this.numericUpDownZ);
             this.groupBox6.Controls.Add(this.numericUpDownY);
             this.groupBox6.Controls.Add(this.numericUpDownX);
+            this.groupBox6.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox6.Location = new System.Drawing.Point(5, 281);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.groupBox6.Size = new System.Drawing.Size(184, 108);
+            this.groupBox6.Size = new System.Drawing.Size(169, 108);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "View Angle";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(98, 80);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(30, 15);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Step";
+            // 
+            // numericUpDownStep
+            // 
+            this.numericUpDownStep.Location = new System.Drawing.Point(86, 49);
+            this.numericUpDownStep.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDownStep.Minimum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDownStep.Name = "numericUpDownStep";
+            this.numericUpDownStep.Size = new System.Drawing.Size(56, 23);
+            this.numericUpDownStep.TabIndex = 8;
+            this.numericUpDownStep.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(66, 80);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(14, 15);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Z";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(66, 51);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(14, 15);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Y";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(66, 24);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(14, 15);
+            this.label12.TabIndex = 5;
+            this.label12.Text = "X";
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(104, 20);
+            this.button3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button3.Location = new System.Drawing.Point(86, 20);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 4;
             this.button3.Text = "Shift";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // numericUpDownZ
@@ -848,7 +923,7 @@ namespace CGLab69.Lab6
             // 
             // numericUpDownY
             // 
-            this.numericUpDownY.Location = new System.Drawing.Point(4, 49);
+            this.numericUpDownY.Location = new System.Drawing.Point(4, 20);
             this.numericUpDownY.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -865,7 +940,7 @@ namespace CGLab69.Lab6
             // 
             // numericUpDownX
             // 
-            this.numericUpDownX.Location = new System.Drawing.Point(4, 20);
+            this.numericUpDownX.Location = new System.Drawing.Point(4, 49);
             this.numericUpDownX.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -882,23 +957,60 @@ namespace CGLab69.Lab6
             // 
             // groupBox7
             // 
+            this.groupBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.groupBox7.Controls.Add(this.comboBox2);
+            this.groupBox7.Controls.Add(this.label16);
+            this.groupBox7.Controls.Add(this.label15);
             this.groupBox7.Controls.Add(this.button_ShowGraph);
             this.groupBox7.Controls.Add(this.textBoxZ0);
             this.groupBox7.Controls.Add(this.textBoxX0);
             this.groupBox7.Controls.Add(this.textBoxZ1);
             this.groupBox7.Controls.Add(this.textBoxX1);
-            this.groupBox7.Location = new System.Drawing.Point(941, 11);
+            this.groupBox7.ForeColor = System.Drawing.SystemColors.Control;
+            this.groupBox7.Location = new System.Drawing.Point(839, 12);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(143, 200);
+            this.groupBox7.Size = new System.Drawing.Size(245, 146);
             this.groupBox7.TabIndex = 15;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Graph";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "x^2+y^2",
+            "sin(x)+cos(y)",
+            "sin(x)*cos(y)",
+            "special 1",
+            "special 2"});
+            this.comboBox2.Location = new System.Drawing.Point(7, 87);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(100, 23);
+            this.comboBox2.TabIndex = 15;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(9, 55);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(14, 15);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Z";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(9, 25);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(14, 15);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "X";
             // 
             // DimaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(28)))), ((int)(((byte)(28)))));
             this.ClientSize = new System.Drawing.Size(1088, 525);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
@@ -934,6 +1046,8 @@ namespace CGLab69.Lab6
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStep)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownX)).EndInit();
@@ -1013,5 +1127,13 @@ namespace CGLab69.Lab6
         private System.Windows.Forms.NumericUpDown numericUpDownY;
         private System.Windows.Forms.NumericUpDown numericUpDownX;
         private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown numericUpDownStep;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

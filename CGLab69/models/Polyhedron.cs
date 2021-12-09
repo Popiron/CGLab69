@@ -19,7 +19,7 @@ namespace CGLab69.models
         /// <summary>
         /// Прямые (ребра)
         /// </summary>
-        public List<Edge> Edges { get; set; }
+        public List<Edge> Curves { get; set; }
         /// <summary>
         /// Вершины
         /// </summary>
@@ -31,7 +31,7 @@ namespace CGLab69.models
 
         public Polyhedron()
         {
-            Edges = new List<Edge>();
+            Curves = new List<Edge>();
             Vertices = new List<Point3D>();
             AdjacencyMatrix = new Dictionary<Point3D, List<Point3D>>();
         }
@@ -49,8 +49,8 @@ namespace CGLab69.models
                 Vertices.Add(p1);
             if (!Vertices.Contains(p2))
                 Vertices.Add(p2);
-            if (!Edges.Contains(new Edge(p1, p2)))
-                Edges.Add(new Edge(p1, p2));
+            if (!Curves.Contains(new Edge(p1, p2)))
+                Curves.Add(new Edge(p1, p2));
             if (!AdjacencyMatrix.ContainsKey(p1))
                 AdjacencyMatrix.Add(p1, new List<Point3D> { p2 });
             else
