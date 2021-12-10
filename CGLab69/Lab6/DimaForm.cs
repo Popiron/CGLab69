@@ -86,6 +86,11 @@ namespace CGLab69.Lab6
             ClearPicture();
             var bmp = Lighting.lighting(mainPictureBox.Width, mainPictureBox.Height, polyhedron, lightPosition, polyhedronColor);
             mainPictureBox.Image = bmp;
+            if (pictureBox1.Image!= null)
+            { 
+
+            Texturing(polyhedron);
+            }
         }
 
         private void eraseLine()
@@ -909,16 +914,39 @@ namespace CGLab69.Lab6
             refreshFigure();
         }
         
+        bool InPolygon(Point3D point, Face x)
+        {
+            List<Point3D> p = new List<Point3D>();
+            foreach (var i in x.Edges)
+            {
+                p.Add(i.First);
+                p.Add(i.Second);
+            }
+
+            bool result = false;
+            int j = p.Count - 1;
+            for (int i = 0; i < p.Count; i++)
+            {
+                if ((p[i].Y < point.Y && p[j].Y >= point.Y || p[j].Y < point.Y && p[i].Y >= point.Y) &&
+                     (p[i].X + (point.Y - p[i].Y) / (p[j].Y - p[i].Y) * (p[j].X - p[i].X) < point.X))
+                    result = !result;
+                j = i;
+            }
+            return result;
+        }
         private void Texturing(Polyhedron p)
         {
-            float xMax = -1;
-            float yMax = -1;
-            float yMin = int.MaxValue;
-            float xMin = int.MaxValue;
+
+            
             Bitmap mp = new Bitmap(mainPictureBox.Image);
-            Bitmap image = new Bitmap(pictureBox1.Image);
+            Bitmap image = new Bitmap(pictureBox1.Image, new Size(300,300));
+            
             foreach (var x in p.Faces)
             {
+                float xMax = int.MinValue;
+                float yMax = int.MinValue;
+                float yMin = int.MaxValue;
+                float xMin = int.MaxValue;
                 for (int i = 0; i < x.Edges.Count; i++)
                 {
                    if( xMax < Math.Max(x.Edges[i].First.X, x.Edges[i].Second.X))
@@ -935,22 +963,47 @@ namespace CGLab69.Lab6
                     }
                     if (yMin > Math.Min(x.Edges[i].First.Y, x.Edges[i].Second.Y))
                     {
-                        yMin = (float)Math.Min(x.Edges[i].First.Y, x.Edges[i].Second.Y);
-                    }
-                }
-                for (var i = xMin; i<xMax; i++)
-                { 
-                    for (var j = yMin; j < yMin; j++)
-                    {
-                        var u = (i - xMin) / (xMax - xMin);
-                        var v = (j - yMin) / (yMax - yMin);
-                        Color c = image.GetPixel((int)(u), (int)(v));
-                        mp.SetPixel((int)i, (int)j, c);
+                        yMin = (float)Math.Min(x.Edges[i].First.Y,x.Edges[i].Second.Y);
                     }
                     
                 }
+               
+                for (var i = xMin; i < xMax; i++)
+                {
+                    for (var j = yMin; j < yMax; j++)
+
+                    {
+                        if ((mainPictureBox.Width / 2 + i) < mainPictureBox.Width && (mainPictureBox.Height / 2 + j) < mainPictureBox.Height)
+                        {
+                            Point3D pnt = new Point3D(i,j,0);
+                            Point3D pnt2 = new Point3D(i,j, 300);
+                            Point3D pnt3 = new Point3D(i,j, - 300);
+                            if (InPolygon(pnt,x) || InPolygon(pnt2, x) || InPolygon(pnt3, x)) { 
+
+                             var yd = (yMax - yMin) != 0 ? (yMax - yMin) : 1;
+                             var xd = (xMax - xMin) != 0 ? (xMax - xMin) : 1;
+                             var u = (i - xMin) / yd;
+                             var v = (j - yMin) / xd;
+                             u = u > 0  ? u : 0;
+                             v = v > 0 ? v : 0;
+
+                            if (u*xMax < 300 && v*yMax < 300)
+                            {
+                            Color c = image.GetPixel(Math.Abs((int)(u*xMax )), Math.Abs((int)(v*yMax )));
+                            
+
+                            mp.SetPixel(Math.Abs(mainPictureBox.Width/2 + (int)i), Math.Abs((int)j + mainPictureBox.Height/ 2), c);
+                            }
+                            }
+
+                        }
+                    }
+
+                }
             }
             mainPictureBox.Image = mp;
+            mainPictureBox.Refresh();
+            
         }
 
         private void buttonUpload_Click(object sender, EventArgs e)
@@ -1025,6 +1078,8 @@ namespace CGLab69.Lab6
         {
             Texturing(polyhedron);
             refreshFigure();
+
+
         }
     }
 }
