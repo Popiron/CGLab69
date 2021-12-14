@@ -655,7 +655,7 @@ namespace CGLab69.Lab6
             this.textBoxRotate.Name = "textBoxRotate";
             this.textBoxRotate.Size = new System.Drawing.Size(73, 23);
             this.textBoxRotate.TabIndex = 1;
-            this.textBoxRotate.Text = "2";
+            this.textBoxRotate.Text = "15";
             // 
             // label2
             // 

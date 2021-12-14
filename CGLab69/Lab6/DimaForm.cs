@@ -24,6 +24,8 @@ namespace CGLab69.Lab6
         int midY;
         Pen globalPen = Pens.Black;
 
+        Vector3D viewAngle = new Vector3D(0, 0, 600);
+
         public DimaForm()
         {
             InitializeComponent();
@@ -59,63 +61,27 @@ namespace CGLab69.Lab6
                     polyhedron = new Tetrahedron();
                     break;
             }
-            foreach (var r in polyhedron.useProjection(currentProjection).Edges)
-            {
-                g.DrawLine(globalPen, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
-            }
-        }
-
-        private void loadVisible()
-        {
-            g.Clear(Color.White);
-            switch (currentFigure)
-            {
-                case Figures.Tetrahedron:
-                    polyhedron = new Tetrahedron();
-                    break;
-                case Figures.Hexahedron:
-                    polyhedron = new Hexahedron();
-                    break;
-                case Figures.Octahedron:
-                    polyhedron = new Octahedron();
-                    break;
-                default:
-                    polyhedron = new Tetrahedron();
-                    break;
-            }
+            richTextBox1.Text = "";
             foreach (var face in polyhedron.Faces)
             {
-                if (Center(face).Z > Center(polyhedron).Z)
+                Vector3D faceVec = face.NormalVec();
+
+                richTextBox1.Text += Math.Truncate(faceVec.X).ToString() + ";" + Math.Truncate(faceVec.Y).ToString() + "; " + Math.Truncate(faceVec.Z).ToString() + "\n";
+
+                /*if (faceVec.Z < 0)
+                {
+                    continue;
+                }*/
+
+                if (Vector3D.AngleBetween(viewAngle, faceVec) > 90)
                 {
                     continue;
                 }
-                foreach (var edge in face.useProjection(currentProjection).Edges)
-                {
-                    g.DrawLine(globalPen, (int)(edge.First.X + midX), (int)(edge.First.Y + midY), (int)(edge.Second.X + midX), (int)(edge.Second.Y + midY));
-                }
-            }
-        }
 
-        private void DemoOct()
-        {
-            g.Clear(Color.White);
-            currentFigure = Figures.Octahedron;
-            polyhedron = new Octahedron();
-            
-            foreach (var face in polyhedron.Faces)
-            {
-                if (Center(face).Z > Center(polyhedron).Z) 
+                foreach (var edge in face./*useProjection(currentProjection).*/Edges)
                 {
-                    continue;
+                    g.DrawLine(Pens.Black, (int)(edge.First.X + midX), (int)(edge.First.Y + midY), (int)(edge.Second.X + midX), (int)(edge.Second.Y + midY));
                 }
-                foreach (var edge in face.useProjection(currentProjection).Edges)
-                {
-                    g.DrawLine(globalPen, (int)(edge.First.X + midX), (int)(edge.First.Y + midY), (int)(edge.Second.X + midX), (int)(edge.Second.Y + midY));
-                }
-            }
-            while (true) 
-            {
-                RotateCenter();
             }
         }
 
@@ -135,19 +101,16 @@ namespace CGLab69.Lab6
             richTextBox1.Text = "";
             foreach (var face in polyhedron.Faces)
             {
-                
+                Vector3D faceVec = face.NormalVec();
 
-                Vector3D rvec = face.NormalVec();
+                richTextBox1.Text += Math.Truncate(faceVec.X).ToString() + ";" + Math.Truncate(faceVec.Y).ToString() + "; " + Math.Truncate(faceVec.Z).ToString() + "\n";
 
-                richTextBox1.Text += Math.Truncate(rvec.X).ToString() + ";" + Math.Truncate(rvec.Y).ToString() + "; " + Math.Truncate(rvec.Z).ToString() + "\n";
-                
-                
-                //if (rvec.Z > -53790)
-                //{
-                //    continue;
-                //}
+                if (Vector3D.AngleBetween(viewAngle, faceVec) > 90)
+                {
+                    continue;
+                }
 
-                foreach (var edge in face.useProjection(currentProjection).Edges)
+                foreach (var edge in face./*useProjection(currentProjection).*/Edges)
                 {
                     g.DrawLine(Pens.Black, (int)(edge.First.X + midX), (int)(edge.First.Y + midY), (int)(edge.Second.X + midX), (int)(edge.Second.Y + midY));
                 }
@@ -155,7 +118,7 @@ namespace CGLab69.Lab6
         }
         private void eraseLine()
         {
-            foreach (var r in line.useProjection(currentProjection).Edges)
+            foreach (var r in line./*useProjection(currentProjection).*/Edges)
             {
                 g.DrawLine(Pens.White, (int)(r.First.X + midX), (int)(r.First.Y + midY), (int)(r.Second.X + midX), (int)(r.Second.Y + midY));
             }
@@ -750,12 +713,12 @@ namespace CGLab69.Lab6
 
         private void buttonDemoOct_Click(object sender, EventArgs e)
         {
-            DemoOct();
+            //DemoOct();
         }
 
         private void buttonDemoOct_Click_1(object sender, EventArgs e)
         {
-            DemoOct();
+            //DemoOct();
         }
     }
 }
